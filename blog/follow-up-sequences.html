@@ -144,6 +144,22 @@
 <body class="bg-background-dark text-white antialiased min-h-screen flex flex-col items-center">
 <div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%] animate-orb-float"></div>
 <div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%] animate-orb-float" style="animation-delay: -5s;"></div>
+<!-- Floating stars -->
+<div class="fixed pointer-events-none z-0" style="top: 20%; left: 15%; opacity: 0.15;">
+<svg class="w-16 h-16 text-white animate-pulse-slow" viewBox="0 0 100 100">
+<path d="M50 0 L55 45 L100 50 L55 55 L50 100 L45 55 L0 50 L45 45 Z" fill="currentColor"></path>
+</svg>
+</div>
+<div class="fixed pointer-events-none z-0" style="top: 60%; right: 10%; opacity: 0.1;">
+<svg class="w-10 h-10 text-white animate-bounce" style="animation-duration: 4s;" viewBox="0 0 100 100">
+<path d="M50 0 L52 48 L100 50 L52 52 L50 100 L48 52 L0 50 L48 48 Z" fill="currentColor"></path>
+</svg>
+</div>
+<div class="fixed pointer-events-none z-0" style="bottom: 25%; left: 60%; opacity: 0.08;">
+<svg class="w-20 h-20 text-white animate-pulse-slow" style="animation-delay: -2s;" viewBox="0 0 100 100">
+<path d="M50 0 L55 45 L100 50 L55 55 L50 100 L45 55 L0 50 L45 45 Z" fill="currentColor"></path>
+</svg>
+</div>
 <nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
 <a href="/" class="flex items-center gap-2 group cursor-pointer">
 <span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
