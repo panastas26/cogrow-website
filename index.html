@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CoGrow AI - Intelligent Automation Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ primary: "#ffffff",
+ "background-light": "#f3f4f6",
+ "background-dark": "#0a0a0a",
+ "surface-dark": "#141414",
+ "surface-darker": "#1a1a1a",
+ "border-dark": "#2a2a2a",
+ "text-muted": "#888888",
+ },
+ fontFamily: {
+ display: ["Inter", "sans-serif"],
+ },
+ borderRadius: {
+ DEFAULT: "0.75rem",
+ },
+ backgroundImage: {
+ 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+ },
+ animation: {
+ 'float': 'float 6s ease-in-out infinite',
+ 'orb-float': 'orb-float 20s infinite alternate linear',
+ 'bubble-up': 'bubble-up 10s infinite ease-in-out',
+ 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+ },
+ keyframes: {
+ float: {
+ '0%, 100%': { transform: 'translateY(0)' },
+ '50%': { transform: 'translateY(-10px)' },
+ },
+ 'orb-float': {
+ '0%': { transform: 'translate(0, 0) scale(1)' },
+ '50%': { transform: 'translate(10%, 10%) scale(1.1)' },
+ '100%': { transform: 'translate(-5%, 5%) scale(0.9)' },
+ },
+ 'bubble-up': {
+ '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' },
+ '50%': { opacity: '0.2' },
+ '100%': { transform: 'translateY(-20vh) scale(1.5)', opacity: '0' },
+ }
+ }
+ },
+ },
+ };
+ </script>
+<style>
+ body {
+ font-family: 'Inter', sans-serif;
+ background-color: #0a0a0a;
+ color: #ffffff;
+ overflow-x: hidden;
+ }
+ .grid-bg {
+ background-size: 40px 40px;
+ background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+ }
+ .glass-card {
+ background: rgba(20, 20, 20, 0.6);
+ backdrop-filter: blur(10px);
+ border: 1px solid rgba(255, 255, 255, 0.1);
+ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+ .glass-card:hover {
+ transform: translateY(-8px) scale(1.02);
+ border-color: rgba(255, 255, 255, 0.2);
+ box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05);
+ }
+ .bubbly-hover {
+ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+ .bubbly-hover:hover {
+ transform: scale(1.05);
+ filter: brightness(1.1);
+ }
+ .nav-link {
+ transition: all 0.3s ease;position: relative;
+ }
+ .nav-link::after {
+ content: '';
+ position: absolute;
+ bottom: -4px;
+ left: 50%;
+ width: 0;
+ height: 2px;
+ background: white;
+ transition: all 0.3s ease;
+ transform: translateX(-50%);
+ border-radius: 2px;
+ }
+ .nav-link:hover::after {
+ width: 100%;
+ }
+ .reveal {
+ opacity: 0;
+ transform: translateY(30px) scale(0.95);
+ transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+ }
+ .reveal.active {
+ opacity: 1;
+ transform: translateY(0) scale(1);
+ }
+ .bg-orb {
+ position: fixed;
+ border-radius: 50%;
+ filter: blur(80px);
+ z-index: -1;
+ pointer-events: none;
+ opacity: 0.15;
+ }
+ .bubble {
+ position: absolute;
+ background: rgba(255, 255, 255, 0.05);
+ border-radius: 50%;
+ pointer-events: none;
+ }
+ .gradient-text {
+ background: linear-gradient(to right, #fff 20%, #666 100%);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ }
+ </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white antialiased min-h-screen flex flex-col items-center">
+<div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%] animate-orb-float"></div>
+<div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%] animate-orb-float" style="animation-delay: -5s;"></div>
+<nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+<div class="flex items-center gap-2 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</div>
+<div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+<a class="nav-link hover:text-white" href="#">Resources</a>
+<a class="nav-link hover:text-white" href="#">Support</a>
+<a class="nav-link hover:text-white" href="#">Solutions</a>
+<a class="nav-link hover:text-white" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4 text-sm">
+<a class="bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition-all bubbly-hover shadow-lg shadow-white/5" href="https://cal.com/cogrowai/freeaudit" target="_blank">Book a Call</a>
+</div>
+</nav>
+<main class="w-full max-w-6xl mx-auto px-6 flex flex-col gap-32 pb-32 pt-16">
+<section class="relative w-full grid-bg rounded-3xl overflow-hidden border border-white/5 pb-24 reveal active">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-white/5 to-transparent rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+<div class="pt-24 px-8 md:px-16 flex flex-col md:flex-row items-start justify-between relative z-10">
+<div class="max-w-xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 mb-8 animate-float">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+ Capturing leads 24/7
+ </div>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">Automate Your Business<br/>Growth with Intelligent AI</h1>
+<p class="text-lg text-gray-400 mb-10 max-w-md">Deploy custom AI agents to handle your customer service, marketing, sales, and internal operations with precision.</p>
+<div class="flex flex-wrap items-center gap-4">
+<button class="bg-white text-black px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-gray-200 transition-all bubbly-hover shadow-xl shadow-white/10">
+ Start a Free Trial
+ <span class="material-icons text-sm">arrow_forward</span>
+</button>
+<button class="bg-surface-darker border border-white/10 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 transition-all bubbly-hover">
+ Watch Demo
+ <span class="material-icons text-sm">play_arrow</span>
+</button>
+</div>
+</div>
+<div class="hidden md:block relative w-[300px] h-[300px]">
+<svg class="w-full h-full text-white/20 animate-pulse-slow" viewBox="0 0 100 100">
+<path d="M50 0 L55 45 L100 50 L55 55 L50 100 L45 55 L0 50 L45 45 Z" fill="currentColor"></path>
+</svg>
+<svg class="w-24 h-24 text-white/40 absolute top-10 right-10 animate-bounce" style="animation-duration: 4s;" viewBox="0 0 100 100">
+<path d="M50 0 L52 48 L100 50 L52 52 L50 100 L48 52 L0 50 L48 48 Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+<div class="mt-24 px-8 md:px-16 border-t border-white/5 pt-10">
+<p class="text-center text-xs text-gray-500 mb-8 uppercase tracking-widest">Trusted by industry leaders</p>
+<div class="flex flex-wrap justify-between items-center opacity-40 grayscale gap-8">
+<img alt="Google" class="h-6 bubbly-hover cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhuBSFzQt2hj4yg2kCPqiSEMU8FBKd_WKgph_TbR92voeIg0-9LPqKwZHQOE01uin05sgd3lC3-h9NitO9Zm8e57P_Z_E55DyWOa_9XMn9Dgl4DeUYXWz8aOKNZcULflFDnem6BlKC7nqV5O_8eCx_D-dzeH0NYY_1Q5EkiWHlhbA0Ccl-kGqAPbeztomBql6VndhPSRn9T0COqHLDoP5wx4f6_MfDDm8DI10Kpj7ovrcb5u1Tj8E0r64S1Dqheko7J2AaZcFaNUU"/>
+<img alt="React" class="h-8 bubbly-hover cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6U63deRuKTlsz2nlSTlruakFPBS_y5lUOrYWjsjs0pUiQQ5i-SNJnVfXXVh-yDY-c64QLw_ICkrRMkzzg6gIk9-G57y9wEMB228Xe2nxWWKLh1SZIZQqG4lzwwl_We8nHUf1fVZXM2ebxZW6GMmo5kSaKgHiAYh3e-J8JbJk3oJGDmQNsY5_Au4LWfxwDMbV8I-roP3N3QqMxzPFjvWAOYPZlOSWCCHdXaiYi7ca_huQ2ira2vOsU3f5qlqn5bQlXa1fP9oRNnWc"/>
+<img alt="Apple" class="h-7 filter invert bubbly-hover cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNRjBzXDsA99HeGMhXL7ZIGeQGsjpUuMuIjnjhOif8bs7jjXIlj_h_ee4F3shjhJvvrpZ2cPJ3roKb9mLByXz9gjwoLzOa15cch7pQqgqLWeB3LBWtksyfslmQFUIg8u6OEIovprL3ZL-C1rwhoZIDZ-xuczJwV68OX_gDAZsgXC-1lQonzKHr2tq16dLFXbAriBKuxvjU0wicJz3cyov8niT3kbyIWgsQz3yrHtRqICNjOF-JkjHvvHqfU2pAr1qAbXlC8uVlmJE"/>
+<img alt="Adobe" class="h-6 filter invert bubbly-hover cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBostkPWCFVxDllzhz4ZT-tJ6qFXelmpiejMgabdZMuNsQ3OTufx3Z0cJyiD25_1XuxU5HjaislikS4s5ZtPwqSNbRkZQ7r5gbSePzl8mUOe3U9gnOQQF0uQQISsyUhbTZwAYieHIYWHP7aq1ivSnvGByBc5saCcC-zgMux6CrrINEMXOLxXpcxJkKw_ZKjwApC-VLyE_Cay5aOmM3Cj4XfnhoLxCkv3MHOdziSVG3WCkVHpQdc9eqm7YXx0eW_J8hsSJZNqXjF_qY"/>
+<img alt="Microsoft" class="h-6 bubbly-hover cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdvg3BRJJ7bJrpm5cmPOpjlNmnGrL7SJrjO3oSgxC7SeF-1sp2vA0qO5fGD2IDMdzaHLhFiIf4Heil7UhurREd588p62tlcbS9pXb8KqQxyBXdDDkRe70MOm5dHPDEkDAlmyUIg7Uqm2tbFLUwZerWYj8A1MMGvZxTGFWKEUPXhLOgMYfruTFEdBIWMs_qgyhWZKRmAxHrUfFhw0LVA_TQXE9xmlisFueL1H6Ui6XOI3JAe3toEZ4cHLNZLpi-EPVf21OuDnxOJFw"/>
+</div>
+</div>
+</section>
+<section class="w-full flex flex-col md:flex-row items-center gap-16 reveal relative overflow-hidden py-12">
+<div class="absolute inset-0 bg-gradient-radial from-white/[0.02] to-transparent -z-10"></div>
+<div class="flex-1 space-y-8">
+<div class="inline-flex items-center gap-2 text-sm text-gray-400">
+<span class="material-icons text-xs text-red-500">timer</span>
+ Urgent Statistics
+ </div>
+<h2 class="text-4xl md:text-6xl font-bold tracking-tighter leading-tight">
+ Speed-to-lead <br/>
+<span class="gradient-text">is the gap.</span>
+</h2>
+<div class="space-y-6">
+<div class="flex gap-4 items-start group">
+<div class="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 text-white group-hover:scale-110 transition-transform">
+<span class="material-icons">phone_missed</span>
+</div>
+<p class="text-xl text-gray-300">58% of leads come in after hours and <span class="text-white font-semibold">go to voicemail.</span></p>
+</div>
+<div class="flex gap-4 items-start group">
+<div class="mt-1 p-2 rounded-lg bg-white/5 border border-white/10 text-white group-hover:scale-110 transition-transform">
+<span class="material-icons">payments</span>
+</div>
+<p class="text-xl text-gray-300">Firms pay for leads they <span class="text-white font-semibold">never call back.</span></p>
+</div>
+</div>
+<a href="https://cal.com/cogrowai/freeaudit" target="_blank" class="bg-white text-black px-8 py-4 rounded-full font-bold bubbly-hover shadow-2xl shadow-white/10 inline-block">
+ Close the Gap Now
+ </a>
+</div>
+<div class="flex-1 w-full max-w-md relative">
+<div class="glass-card p-8 rounded-3xl relative z-10 animate-float">
+<div class="flex justify-between items-center mb-8">
+<div class="h-3 w-24 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-2/3 animate-pulse"></div>
+</div>
+<span class="text-xs text-red-400 font-mono">CRITICAL DELAY</span>
+</div>
+<div class="space-y-4">
+<div class="h-12 bg-white/5 rounded-xl flex items-center px-4 gap-3 border border-white/5"><div class="w-2 h-2 rounded-full bg-gray-600"></div>
+<div class="h-2 w-32 bg-white/10 rounded-full"></div>
+</div>
+<div class="h-12 bg-white/5 rounded-xl flex items-center px-4 gap-3 border border-white/5">
+<div class="w-2 h-2 rounded-full bg-gray-600"></div>
+<div class="h-2 w-24 bg-white/10 rounded-full"></div>
+</div>
+<div class="h-12 bg-white/10 rounded-xl flex items-center justify-between px-4 border border-white/20 shadow-lg shadow-white/5">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<div class="h-2 w-40 bg-white/20 rounded-full"></div>
+</div>
+<span class="text-[10px] text-green-400">INSTANT AI REPLY</span>
+</div>
+</div>
+</div>
+<div class="absolute -top-4 -right-4 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
+</div>
+</section>
+<section class="w-full flex flex-col gap-12 reveal">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 text-sm text-gray-400 mb-4">
+<span class="material-icons text-xs">group_work</span>
+ Who We Work With
+ </div>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gray-200">Built for Industry<br/><span class="text-white">Specific Growth</span></h2>
+<p class="text-gray-400 text-lg">Specialized automation workflows tailored for high-volume service businesses.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="glass-card p-10 rounded-3xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-icons text-8xl">business_center</span>
+</div>
+<h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+<span class="material-icons text-white">architecture</span>
+ Professional Services
+ </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-400 text-sm">
+<div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 bubbly-hover cursor-default">
+<span class="material-icons text-xs">verified</span> CPAs
+</div>
+<div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 bubbly-hover cursor-default">
+<span class="material-icons text-xs">verified</span> Law Firms
+</div>
+<div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 bubbly-hover cursor-default">
+<span class="material-icons text-xs">verified</span> Property Management
+</div>
+<div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 bubbly-hover cursor-default">
+<span class="material-icons text-xs">verified</span> Insurance Brokers
+</div>
+<div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 bubbly-hover cursor-default col-span-full">
+<span class="material-icons text-xs">verified</span> Real Estate Operators
+</div>
+</div>
+</div>
+<div class="glass-card p-10 rounded-3xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-icons text-8xl">handyman</span>
+</div>
+<h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+<span class="material-icons text-white">construction</span>
+ Field Services
+ </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-400 text-sm">
+<div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 bubbly-hover cursor-default">
+<span class="material-icons text-xs">verified</span> Pest Control
+</div>
+<div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 bubbly-hover cursor-default">
+<span class="material-icons text-xs">verified</span> HVAC
+</div>
+<div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 bubbly-hover cursor-default">
+<span class="material-icons text-xs">verified</span> Electrical
+</div>
+<div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5 bubbly-hover cursor-default">
+<span class="material-icons text-xs">verified</span> Plumbing
+</div>
+<div class="flex items-center gap-3 bg-white/10 p-3 rounded-xl border border-white/10 text-white col-span-full font-medium">
+<span class="material-icons text-xs animate-pulse">add_circle</span> And More...
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full flex flex-col md:flex-row gap-12 items-center reveal">
+<div class="flex-1 max-w-md">
+<div class="inline-flex items-center gap-2 text-sm text-gray-400 mb-4">
+<span class="material-icons text-xs">emoji_events</span>
+ Our Achievements
+ </div>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-200">Proven Efficiency<br/><span class="text-white">You Can Trust</span></h2>
+<p class="text-gray-400 text-lg">From startups to industry leaders, we've helped businesses achieve remarkable results in record time.</p>
+</div>
+<div class="flex-1 relative w-full h-[400px] flex justify-center items-center">
+<div class="absolute bg-surface-darker border border-white/10 p-6 rounded-2xl shadow-2xl transform rotate-12 translate-x-12 -translate-y-12 w-48 text-center z-10 glass-card bubbly-hover">
+<div class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float">
+<span class="material-icons text-white">trending_up</span>
+</div>
+<h4 class="text-3xl font-bold mb-1">200%</h4>
+<p class="text-xs text-gray-400">Productivity Increase</p>
+</div>
+<div class="absolute bg-surface-darker border border-white/10 p-6 rounded-2xl shadow-2xl transform rotate-6 translate-x-4 w-48 text-center z-20 glass-card bubbly-hover">
+<div class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float" style="animation-delay: -2s;">
+<span class="material-icons text-white">insights</span>
+</div>
+<h4 class="text-3xl font-bold mb-1">50K+</h4>
+<p class="text-xs text-gray-400">Hours Saved Annually</p>
+</div>
+<div class="absolute bg-surface-darker border border-white/10 p-6 rounded-2xl shadow-2xl transform -rotate-6 -translate-x-12 translate-y-12 w-48 text-center z-30 glass-card bubbly-hover">
+<div class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 animate-float" style="animation-delay: -4s;">
+<span class="material-icons text-white">speed</span>
+</div>
+<h4 class="text-3xl font-bold mb-1">~20%</h4>
+<p class="text-xs text-gray-400">Cost Reduction</p>
+</div>
+</div>
+</section>
+<section class="w-full reveal">
+<h2 class="text-3xl md:text-4xl font-bold mb-8">What People Say<br/>About Us</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card p-6 rounded-2xl border border-white/5 group">
+<p class="text-sm text-gray-400 mb-6 group-hover:text-white transition-colors">"We were missing 60% of our after-hours calls. CoGrow set us up with an AI that responds in seconds. We booked 14 extra jobs in the first month alone."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-xs group-hover:scale-110 transition-transform">MR</div>
+<div>
+<p class="text-sm font-medium">Mike Reyes</p>
+<p class="text-xs text-gray-500">Owner, Reyes Pest Solutions</p>
+</div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl border border-white/5 group">
+<p class="text-sm text-gray-400 mb-6 group-hover:text-white transition-colors">"Our intake process was a mess. CoGrow built us an AI system that qualifies leads, books consultations, and follows up automatically. Our close rate went up 40%."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-xs group-hover:scale-110 transition-transform">DK</div>
+<div>
+<p class="text-sm font-medium">Dana Kim</p>
+<p class="text-xs text-gray-500">Managing Partner, Keller &amp; Kim CPA</p>
+</div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl border border-white/5 group">
+<p class="text-sm text-gray-400 mb-6 group-hover:text-white transition-colors">"I was skeptical at first. Now I can't imagine running my properties without it. Tenant inquiries get answered instantly, maintenance requests get routed automatically. It just works."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-xs group-hover:scale-110 transition-transform">TW</div>
+<div>
+<p class="text-sm font-medium">Tom Whitfield</p>
+<p class="text-xs text-gray-500">Principal, Whitfield Property Group</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-end gap-2 mt-4">
+<button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 bubbly-hover"><span class="material-icons text-sm">chevron_left</span></button>
+<button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 bubbly-hover"><span class="material-icons text-sm">chevron_right</span></button>
+</div>
+</section>
+<section class="w-full flex flex-col md:flex-row gap-12 reveal">
+<div class="w-full md:w-1/3">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Your Questions<br/>Answered</h2>
+<p class="text-gray-400 text-sm">Find answers to commonly asked questions about our platform and services.</p>
+</div>
+<div class="w-full md:w-2/3 flex flex-col gap-4">
+<div class="glass-card rounded-xl border border-white/10 overflow-hidden bubbly-hover group">
+<div class="p-5 flex justify-between items-center cursor-pointer bg-white/5">
+<h4 class="font-medium text-sm group-hover:translate-x-1 transition-transform">How long until I see efficiency gains?</h4>
+<span class="material-icons text-gray-400">expand_more</span>
+</div>
+</div>
+<div class="glass-card rounded-xl border border-white/10 overflow-hidden bg-white text-black bubbly-hover shadow-xl">
+<div class="p-5 flex justify-between items-center cursor-pointer border-b border-gray-200">
+<h4 class="font-medium text-sm">What makes your AI training different?</h4>
+<span class="material-icons text-black animate-bounce">expand_less</span>
+</div>
+<div class="p-5 text-sm text-gray-600 bg-gray-50">Our proprietary AI models are trained on your specific business data and workflows, providing highly accurate automations rather than generic templates.</div>
+</div>
+<div class="glass-card rounded-xl border border-white/10 overflow-hidden bubbly-hover group">
+<div class="p-5 flex justify-between items-center cursor-pointer bg-white/5">
+<h4 class="font-medium text-sm group-hover:translate-x-1 transition-transform">Is my data secure for internal operations?</h4>
+<span class="material-icons text-gray-400">expand_more</span>
+</div>
+</div>
+<div class="glass-card rounded-xl border border-white/10 overflow-hidden bubbly-hover group">
+<div class="p-5 flex justify-between items-center cursor-pointer bg-white/5">
+<h4 class="font-medium text-sm group-hover:translate-x-1 transition-transform">What are your integration capabilities?</h4>
+<span class="material-icons text-gray-400">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full border-t border-white/10 pt-16 pb-8 px-6 bg-surface-darker relative overflow-hidden">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 relative z-10">
+<div class="max-w-xs">
+<div class="flex items-center gap-2 mb-4 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:scale-125">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</div>
+<p class="text-sm text-gray-400 mb-6">Empowering businesses with AI-driven automation to dominate their industry with intelligent workflows.</p>
+<div class="flex gap-2">
+<input class="bg-black border border-white/10 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-white/50 transition-all flex-1" placeholder="Enter your email" type="email"/>
+<button class="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium bubbly-hover">Subscribe</button>
+</div>
+</div>
+<div class="flex gap-16">
+<div>
+<h5 class="font-semibold mb-4 text-sm">Product</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="#">Features</a></li>
+<li><a class="nav-link hover:text-white" href="#">Solutions</a></li>
+<li><a class="nav-link hover:text-white" href="#">Case Studies</a></li>
+<li><a class="nav-link hover:text-white" href="#">Reviews</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-semibold mb-4 text-sm">Company</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="#">About</a></li>
+<li><a class="nav-link hover:text-white" href="#">Careers</a></li>
+<li><a class="nav-link hover:text-white" href="#">Blog</a></li>
+<li><a class="nav-link hover:text-white" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-6xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 relative z-10">
+<p>© 2025 CoGrow AI. All rights reserved.</p>
+<div class="text-[60px] md:text-[100px] font-black tracking-tighter opacity-5 leading-none select-none hover:opacity-10 transition-opacity">Automation</div>
+<div class="flex gap-4">
+<a class="hover:text-white transition-colors bubbly-hover" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors bubbly-hover" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="bubble w-20 h-20 top-1/2 left-1/4 animate-bubble-up" style="animation-duration: 15s;"></div>
+<div class="bubble w-32 h-32 bottom-0 right-1/4 animate-bubble-up" style="animation-delay: -5s; animation-duration: 12s;"></div>
+</footer>
+<script>
+ function reveal() {
+ var reveals = document.querySelectorAll(".reveal");
+ for (var i = 0; i < reveals.length; i++) {
+ var windowHeight = window.innerHeight;
+ var elementTop = reveals[i].getBoundingClientRect().top;
+ var elementVisible = 150;
+ if (elementTop < windowHeight - elementVisible) {
+ reveals[i].classList.add("active");
+ }
+ }
+ }
+ window.addEventListener("scroll", reveal);
+ reveal();
+
+ function createBubbles() {
+ const container = document.body;
+ for(let i=0; i<8; i++) {
+ const bubble = document.createElement('div');
+ bubble.className = 'bubble animate-bubble-up';
+ const size = Math.random() * 100 + 50;
+ bubble.style.width = `${size}px`;
+ bubble.style.height = `${size}px`;
+ bubble.style.left = `${Math.random() * 100}vw`;
+ bubble.style.animationDelay = `${Math.random() * 10}s`;
+ bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
+ bubble.style.opacity = '0.05';
+ container.appendChild(bubble);
+ }
+ }
+ createBubbles();
+ </script>
+</body></html>
