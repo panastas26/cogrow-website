@@ -401,37 +401,69 @@
 </section>
 <section class="w-full flex flex-col md:flex-row gap-12 reveal">
 <div class="w-full md:w-1/3">
-<h2 class="text-3xl md:text-4xl font-bold mb-4">Your Questions<br/>Answered</h2>
-<p class="text-gray-400 text-sm">Find answers to commonly asked questions about our platform and services.</p>
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Your Questions<br/><span class="gradient-text">Answered</span></h2>
+<p class="text-gray-400 text-sm">Everything you need to know before getting started.</p>
 </div>
-<div class="w-full md:w-2/3 flex flex-col gap-4">
-<div class="glass-card rounded-xl border border-white/10 overflow-hidden bubbly-hover group">
-<div class="p-5 flex justify-between items-center cursor-pointer bg-white/5">
-<h4 class="font-medium text-sm group-hover:translate-x-1 transition-transform">How long until I see efficiency gains?</h4>
-<span class="material-icons text-gray-400">expand_more</span>
+<div class="w-full md:w-2/3 flex flex-col gap-3" id="faq">
+
+<div class="glass-card rounded-xl border border-white/10 overflow-hidden">
+<button onclick="toggleFaq(this)" class="w-full p-5 flex justify-between items-center cursor-pointer bg-white/5 text-left">
+<h4 class="font-medium text-sm pr-4">How quickly will I see results after getting set up?</h4>
+<span class="material-icons text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div class="faq-answer hidden px-5 pb-5 text-sm text-gray-400 leading-relaxed">Most clients see an immediate improvement in response time from day one. Within the first 30 days you will typically see measurable increases in lead capture and booked appointments. The full impact on revenue usually becomes clear within 60-90 days as the follow-up sequences compound.</div>
 </div>
+
+<div class="glass-card rounded-xl border border-white/10 overflow-hidden">
+<button onclick="toggleFaq(this)" class="w-full p-5 flex justify-between items-center cursor-pointer bg-white/5 text-left">
+<h4 class="font-medium text-sm pr-4">Do I need to change my existing software or CRM?</h4>
+<span class="material-icons text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div class="faq-answer hidden px-5 pb-5 text-sm text-gray-400 leading-relaxed">No. We work alongside whatever you already use. CoGrow integrates with most major CRMs, calendar tools, and phone systems. If you do not have a CRM, we can recommend one or work without it entirely.</div>
 </div>
-<div class="glass-card rounded-xl border border-white/10 overflow-hidden bg-white text-black bubbly-hover shadow-xl">
-<div class="p-5 flex justify-between items-center cursor-pointer border-b border-gray-200">
-<h4 class="font-medium text-sm">What makes your AI training different?</h4>
-<span class="material-icons text-black animate-bounce">expand_less</span>
+
+<div class="glass-card rounded-xl border border-white/10 overflow-hidden">
+<button onclick="toggleFaq(this)" class="w-full p-5 flex justify-between items-center cursor-pointer bg-white/5 text-left">
+<h4 class="font-medium text-sm pr-4">What happens to leads that come in at 2am or on weekends?</h4>
+<span class="material-icons text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div class="faq-answer hidden px-5 pb-5 text-sm text-gray-400 leading-relaxed">They get responded to instantly - same as a lead that comes in at 9am on a Tuesday. The AI handles the initial response, qualifies the lead, and either books them directly on your calendar or queues them for you to follow up first thing in the morning. Nothing falls through the cracks.</div>
 </div>
-<div class="p-5 text-sm text-gray-600 bg-gray-50">Our proprietary AI models are trained on your specific business data and workflows, providing highly accurate automations rather than generic templates.</div>
+
+<div class="glass-card rounded-xl border border-white/10 overflow-hidden">
+<button onclick="toggleFaq(this)" class="w-full p-5 flex justify-between items-center cursor-pointer bg-white/5 text-left">
+<h4 class="font-medium text-sm pr-4">Is there a long-term contract?</h4>
+<span class="material-icons text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div class="faq-answer hidden px-5 pb-5 text-sm text-gray-400 leading-relaxed">No long-term contracts. We work month-to-month. We are confident enough in the results that we do not need to lock you in. That said, most clients stay because the system keeps paying for itself every month.</div>
 </div>
-<div class="glass-card rounded-xl border border-white/10 overflow-hidden bubbly-hover group">
-<div class="p-5 flex justify-between items-center cursor-pointer bg-white/5">
-<h4 class="font-medium text-sm group-hover:translate-x-1 transition-transform">Is my data secure for internal operations?</h4>
-<span class="material-icons text-gray-400">expand_more</span>
+
+<div class="glass-card rounded-xl border border-white/10 overflow-hidden">
+<button onclick="toggleFaq(this)" class="w-full p-5 flex justify-between items-center cursor-pointer bg-white/5 text-left">
+<h4 class="font-medium text-sm pr-4">How is CoGrow different from hiring a receptionist or VA?</h4>
+<span class="material-icons text-gray-400 transition-transform duration-300">expand_more</span>
+</button>
+<div class="faq-answer hidden px-5 pb-5 text-sm text-gray-400 leading-relaxed">A receptionist works 8 hours a day, 5 days a week, and costs $35,000-$50,000 per year. CoGrow works 24/7/365 at a fraction of the cost, responds in seconds instead of minutes, never calls in sick, and handles unlimited simultaneous inquiries. It does not replace your team - it handles the volume your team cannot.</div>
 </div>
-</div>
-<div class="glass-card rounded-xl border border-white/10 overflow-hidden bubbly-hover group">
-<div class="p-5 flex justify-between items-center cursor-pointer bg-white/5">
-<h4 class="font-medium text-sm group-hover:translate-x-1 transition-transform">What are your integration capabilities?</h4>
-<span class="material-icons text-gray-400">expand_more</span>
-</div>
-</div>
+
 </div>
 </section>
+
+<script>
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.material-icons');
+  const isOpen = !answer.classList.contains('hidden');
+  // Close all
+  document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+  document.querySelectorAll('#faq .material-icons').forEach(i => { i.style.transform = ''; });
+  // Open clicked if it was closed
+  if (!isOpen) {
+    answer.classList.remove('hidden');
+    icon.style.transform = 'rotate(180deg)';
+  }
+}
+</script>
 </main>
 <footer class="w-full border-t border-white/10 pt-16 pb-8 px-6 bg-surface-darker relative overflow-hidden">
 <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 relative z-10">
