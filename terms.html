@@ -5,34 +5,137 @@
 <title>Terms of Service - CoGrow AI</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <script>
  tailwind.config = {
  darkMode: "class",
  theme: {
  extend: {
- colors: { primary: "#ffffff", "background-dark": "#0a0a0a", "surface-dark": "#141414", "surface-darker": "#1a1a1a", "border-dark": "#2a2a2a", "text-muted": "#888888" },
- fontFamily: { display: ["Inter", "sans-serif"] },
- borderRadius: { DEFAULT: "0.75rem" },
- animation: { 'orb-float': 'orb-float 20s infinite alternate linear' },
- keyframes: { 'orb-float': { '0%': { transform: 'translate(0, 0) scale(1)' }, '50%': { transform: 'translate(10%, 10%) scale(1.1)' }, '100%': { transform: 'translate(-5%, 5%) scale(0.9)' } } }
+ colors: {
+ primary: "#ffffff",
+ "background-light": "#f3f4f6",
+ "background-dark": "#0a0a0a",
+ "surface-dark": "#141414",
+ "surface-darker": "#1a1a1a",
+ "border-dark": "#2a2a2a",
+ "text-muted": "#888888",
+ },
+ fontFamily: {
+ display: ["Inter", "sans-serif"],
+ },
+ borderRadius: {
+ DEFAULT: "0.75rem",
+ },
+ backgroundImage: {
+ 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+ },
+ animation: {
+ 'float': 'float 6s ease-in-out infinite',
+ 'orb-float': 'orb-float 20s infinite alternate linear',
+ 'bubble-up': 'bubble-up 10s infinite ease-in-out',
+ 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+ },
+ keyframes: {
+ float: {
+ '0%, 100%': { transform: 'translateY(0)' },
+ '50%': { transform: 'translateY(-10px)' },
+ },
+ 'orb-float': {
+ '0%': { transform: 'translate(0, 0) scale(1)' },
+ '50%': { transform: 'translate(10%, 10%) scale(1.1)' },
+ '100%': { transform: 'translate(-5%, 5%) scale(0.9)' },
+ },
+ 'bubble-up': {
+ '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' },
+ '50%': { opacity: '0.2' },
+ '100%': { transform: 'translateY(-20vh) scale(1.5)', opacity: '0' },
+ }
+ }
  },
  },
  };
-</script>
+ </script>
 <style>
- body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
- .nav-link { transition: all 0.3s ease; position: relative; }
- .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: white; transition: all 0.3s ease; transform: translateX(-50%); border-radius: 2px; }
- .nav-link:hover::after { width: 100%; }
- .bubbly-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
- .bubbly-hover:hover { transform: scale(1.05); filter: brightness(1.1); }
- .bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; pointer-events: none; opacity: 0.15; }
-</style>
+ body {
+ font-family: 'Inter', sans-serif;
+ background-color: #0a0a0a;
+ color: #ffffff;
+ overflow-x: hidden;
+ }
+ .grid-bg {
+ background-size: 40px 40px;
+ background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+ }
+ .glass-card {
+ background: rgba(20, 20, 20, 0.6);
+ backdrop-filter: blur(10px);
+ border: 1px solid rgba(255, 255, 255, 0.1);
+ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+ .glass-card:hover {
+ transform: translateY(-8px) scale(1.02);
+ border-color: rgba(255, 255, 255, 0.2);
+ box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05);
+ }
+ .bubbly-hover {
+ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+ .bubbly-hover:hover {
+ transform: scale(1.05);
+ filter: brightness(1.1);
+ }
+ .nav-link {
+ transition: all 0.3s ease;position: relative;
+ }
+ .nav-link::after {
+ content: '';
+ position: absolute;
+ bottom: -4px;
+ left: 50%;
+ width: 0;
+ height: 2px;
+ background: white;
+ transition: all 0.3s ease;
+ transform: translateX(-50%);
+ border-radius: 2px;
+ }
+ .nav-link:hover::after {
+ width: 100%;
+ }
+ .reveal {
+ opacity: 0;
+ transform: translateY(30px) scale(0.95);
+ transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+ }
+ .reveal.active {
+ opacity: 1;
+ transform: translateY(0) scale(1);
+ }
+ .bg-orb {
+ position: fixed;
+ border-radius: 50%;
+ filter: blur(80px);
+ z-index: -1;
+ pointer-events: none;
+ opacity: 0.15;
+ }
+ .bubble {
+ position: absolute;
+ background: rgba(255, 255, 255, 0.05);
+ border-radius: 50%;
+ pointer-events: none;
+ }
+ .gradient-text {
+ background: linear-gradient(to right, #fff 20%, #666 100%);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ }
+ </style>
 </head>
 <body class="bg-background-dark text-white antialiased min-h-screen flex flex-col items-center">
 <div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%] animate-orb-float"></div>
-
+<div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%] animate-orb-float" style="animation-delay: -5s;"></div>
 <nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
 <a href="/" class="flex items-center gap-2 group cursor-pointer">
 <span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
@@ -53,42 +156,42 @@
 
 <main class="w-full max-w-3xl mx-auto px-6 pb-32 pt-16">
 
-<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Terms of Service</h1>
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Terms of <span class="gradient-text">Service</span></h1>
 <p class="text-gray-400 mb-12">Last updated: March 1, 2025</p>
 
 <div class="prose prose-invert max-w-none space-y-8 text-gray-300 leading-relaxed">
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">1. Acceptance of Terms</h2>
 <p>By accessing or using the CoGrow AI website (cogrow.ai) and services ("Services"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you may not access or use our Services.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">2. Description of Services</h2>
 <p>CoGrow AI provides AI-powered lead response, intake qualification, and follow-up automation services for businesses. Our Services include but are not limited to: speed-to-lead AI systems, automated intake and qualification, follow-up sequences, and client reporting dashboards.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">3. Eligibility</h2>
 <p>You must be at least 18 years old and have the legal authority to enter into these Terms on behalf of yourself or the entity you represent. By using our Services, you represent and warrant that you meet these requirements.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">4. Account and Access</h2>
 <p>You are responsible for maintaining the confidentiality of any account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">5. Fees and Payment</h2>
 <p>Certain Services require payment of fees. All fees are stated in U.S. dollars and are due according to the billing terms agreed upon at the time of purchase. We reserve the right to change our fees upon 30 days' written notice. Late payments may be subject to interest at the rate of 1.5% per month or the maximum rate permitted by law, whichever is lower.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">6. Service Level</h2>
 <p>We strive to provide reliable and continuous Services but do not guarantee uninterrupted access. We may perform scheduled maintenance with reasonable advance notice. We are not liable for any temporary unavailability due to maintenance, updates, or circumstances beyond our reasonable control.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">7. Acceptable Use</h2>
 <p>You agree not to use our Services to:</p>
 <ul class="list-disc list-inside space-y-2 ml-4">
@@ -100,43 +203,43 @@
 </ul>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">8. Intellectual Property</h2>
 <p>All content, features, and functionality of our Services (including but not limited to text, graphics, logos, software, and AI models) are owned by CoGrow AI and are protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our prior written consent.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">9. Data and Privacy</h2>
 <p>Your use of our Services is also governed by our <a href="/privacy.html" class="text-white underline">Privacy Policy</a>. By using our Services, you consent to the collection and use of information as described therein. You retain ownership of any data you provide to us through the Services.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">10. Limitation of Liability</h2>
 <p>To the maximum extent permitted by law, CoGrow AI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from your use of our Services.</p>
 <p>Our total aggregate liability for all claims arising from or relating to these Terms or our Services shall not exceed the total amount paid by you to CoGrow AI during the twelve (12) months preceding the claim.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">11. Indemnification</h2>
 <p>You agree to indemnify, defend, and hold harmless CoGrow AI, its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses arising out of or in any way connected with your use of our Services or violation of these Terms.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">12. Termination</h2>
 <p>Either party may terminate the service agreement with 30 days' written notice. We may suspend or terminate your access immediately if you breach these Terms. Upon termination, your right to use the Services will cease immediately.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">13. Governing Law</h2>
 <p>These Terms shall be governed by and construed in accordance with the laws of the Commonwealth of Massachusetts, without regard to its conflict of law provisions. Any disputes arising under these Terms shall be resolved in the state or federal courts located in Suffolk County, Massachusetts.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">14. Changes to Terms</h2>
 <p>We reserve the right to modify these Terms at any time. We will provide notice of material changes by posting the updated Terms on our website with a new "Last updated" date. Your continued use of the Services after such changes constitutes acceptance of the modified Terms.</p>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="text-xl font-bold text-white mb-3">15. Contact</h2>
 <p>If you have any questions about these Terms, please contact us at:</p>
 <p class="mt-2">CoGrow AI<br/>Boston, MA<br/><a href="mailto:paul@cogrow.ai" class="text-white underline">paul@cogrow.ai</a></p>
@@ -186,4 +289,36 @@
 </div>
 </div>
 </footer>
+<script>
+ function reveal() {
+ var reveals = document.querySelectorAll(".reveal");
+ for (var i = 0; i < reveals.length; i++) {
+ var windowHeight = window.innerHeight;
+ var elementTop = reveals[i].getBoundingClientRect().top;
+ var elementVisible = 150;
+ if (elementTop < windowHeight - elementVisible) {
+ reveals[i].classList.add("active");
+ }
+ }
+ }
+ window.addEventListener("scroll", reveal);
+ reveal();
+
+ function createBubbles() {
+ const container = document.body;
+ for(let i=0; i<8; i++) {
+ const bubble = document.createElement('div');
+ bubble.className = 'bubble animate-bubble-up';
+ const size = Math.random() * 100 + 50;
+ bubble.style.width = `${size}px`;
+ bubble.style.height = `${size}px`;
+ bubble.style.left = `${Math.random() * 100}vw`;
+ bubble.style.animationDelay = `${Math.random() * 10}s`;
+ bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
+ bubble.style.opacity = '0.05';
+ container.appendChild(bubble);
+ }
+ }
+ createBubbles();
+ </script>
 </body></html>

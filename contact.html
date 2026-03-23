@@ -5,6 +5,7 @@
 <title>Contact - CoGrow AI</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <script>
  tailwind.config = {
@@ -13,39 +14,128 @@
  extend: {
  colors: {
  primary: "#ffffff",
+ "background-light": "#f3f4f6",
  "background-dark": "#0a0a0a",
  "surface-dark": "#141414",
  "surface-darker": "#1a1a1a",
  "border-dark": "#2a2a2a",
  "text-muted": "#888888",
  },
- fontFamily: { display: ["Inter", "sans-serif"] },
- borderRadius: { DEFAULT: "0.75rem" },
- backgroundImage: { 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))' },
- animation: { 'orb-float': 'orb-float 20s infinite alternate linear' },
- keyframes: { 'orb-float': { '0%': { transform: 'translate(0, 0) scale(1)' }, '50%': { transform: 'translate(10%, 10%) scale(1.1)' }, '100%': { transform: 'translate(-5%, 5%) scale(0.9)' } } }
+ fontFamily: {
+ display: ["Inter", "sans-serif"],
+ },
+ borderRadius: {
+ DEFAULT: "0.75rem",
+ },
+ backgroundImage: {
+ 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+ },
+ animation: {
+ 'float': 'float 6s ease-in-out infinite',
+ 'orb-float': 'orb-float 20s infinite alternate linear',
+ 'bubble-up': 'bubble-up 10s infinite ease-in-out',
+ 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+ },
+ keyframes: {
+ float: {
+ '0%, 100%': { transform: 'translateY(0)' },
+ '50%': { transform: 'translateY(-10px)' },
+ },
+ 'orb-float': {
+ '0%': { transform: 'translate(0, 0) scale(1)' },
+ '50%': { transform: 'translate(10%, 10%) scale(1.1)' },
+ '100%': { transform: 'translate(-5%, 5%) scale(0.9)' },
+ },
+ 'bubble-up': {
+ '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' },
+ '50%': { opacity: '0.2' },
+ '100%': { transform: 'translateY(-20vh) scale(1.5)', opacity: '0' },
+ }
+ }
  },
  },
  };
-</script>
+ </script>
 <style>
- body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
- .glass-card { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
- .glass-card:hover { border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05); }
- .bubbly-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
- .bubbly-hover:hover { transform: scale(1.05); filter: brightness(1.1); }
- .nav-link { transition: all 0.3s ease; position: relative; }
- .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: white; transition: all 0.3s ease; transform: translateX(-50%); border-radius: 2px; }
- .nav-link:hover::after { width: 100%; }
- .reveal { opacity: 0; transform: translateY(30px) scale(0.95); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
- .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
- .bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; pointer-events: none; opacity: 0.15; }
-</style>
+ body {
+ font-family: 'Inter', sans-serif;
+ background-color: #0a0a0a;
+ color: #ffffff;
+ overflow-x: hidden;
+ }
+ .grid-bg {
+ background-size: 40px 40px;
+ background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+ }
+ .glass-card {
+ background: rgba(20, 20, 20, 0.6);
+ backdrop-filter: blur(10px);
+ border: 1px solid rgba(255, 255, 255, 0.1);
+ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+ .glass-card:hover {
+ transform: translateY(-8px) scale(1.02);
+ border-color: rgba(255, 255, 255, 0.2);
+ box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05);
+ }
+ .bubbly-hover {
+ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+ .bubbly-hover:hover {
+ transform: scale(1.05);
+ filter: brightness(1.1);
+ }
+ .nav-link {
+ transition: all 0.3s ease;position: relative;
+ }
+ .nav-link::after {
+ content: '';
+ position: absolute;
+ bottom: -4px;
+ left: 50%;
+ width: 0;
+ height: 2px;
+ background: white;
+ transition: all 0.3s ease;
+ transform: translateX(-50%);
+ border-radius: 2px;
+ }
+ .nav-link:hover::after {
+ width: 100%;
+ }
+ .reveal {
+ opacity: 0;
+ transform: translateY(30px) scale(0.95);
+ transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+ }
+ .reveal.active {
+ opacity: 1;
+ transform: translateY(0) scale(1);
+ }
+ .bg-orb {
+ position: fixed;
+ border-radius: 50%;
+ filter: blur(80px);
+ z-index: -1;
+ pointer-events: none;
+ opacity: 0.15;
+ }
+ .bubble {
+ position: absolute;
+ background: rgba(255, 255, 255, 0.05);
+ border-radius: 50%;
+ pointer-events: none;
+ }
+ .gradient-text {
+ background: linear-gradient(to right, #fff 20%, #666 100%);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ }
+ </style>
 </head>
 <body class="bg-background-dark text-white antialiased min-h-screen flex flex-col items-center">
 <div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%] animate-orb-float"></div>
 <div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%] animate-orb-float" style="animation-delay: -5s;"></div>
-
 <nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
 <a href="/" class="flex items-center gap-2 group cursor-pointer">
 <span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
@@ -68,7 +158,7 @@
 
 <!-- Hero -->
 <section class="text-center reveal active">
-<h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">Get in Touch</h1>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">Get in <span class="gradient-text">Touch</span></h1>
 <p class="text-lg text-gray-400 max-w-2xl mx-auto">Have a question or ready to get started? Reach out and we'll get back to you within one business day.</p>
 </section>
 

@@ -16,49 +16,134 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <script>
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        primary: "#ffffff",
-        "background-dark": "#0a0a0a",
-        "surface-dark": "#141414",
-        "surface-darker": "#1a1a1a",
-        "border-dark": "#2a2a2a",
-        "text-muted": "#888888",
-      },
-      fontFamily: { display: ["Inter", "sans-serif"] },
-      borderRadius: { DEFAULT: "0.75rem" },
-    },
-  },
-};
-</script>
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ primary: "#ffffff",
+ "background-light": "#f3f4f6",
+ "background-dark": "#0a0a0a",
+ "surface-dark": "#141414",
+ "surface-darker": "#1a1a1a",
+ "border-dark": "#2a2a2a",
+ "text-muted": "#888888",
+ },
+ fontFamily: {
+ display: ["Inter", "sans-serif"],
+ },
+ borderRadius: {
+ DEFAULT: "0.75rem",
+ },
+ backgroundImage: {
+ 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+ },
+ animation: {
+ 'float': 'float 6s ease-in-out infinite',
+ 'orb-float': 'orb-float 20s infinite alternate linear',
+ 'bubble-up': 'bubble-up 10s infinite ease-in-out',
+ 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+ },
+ keyframes: {
+ float: {
+ '0%, 100%': { transform: 'translateY(0)' },
+ '50%': { transform: 'translateY(-10px)' },
+ },
+ 'orb-float': {
+ '0%': { transform: 'translate(0, 0) scale(1)' },
+ '50%': { transform: 'translate(10%, 10%) scale(1.1)' },
+ '100%': { transform: 'translate(-5%, 5%) scale(0.9)' },
+ },
+ 'bubble-up': {
+ '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' },
+ '50%': { opacity: '0.2' },
+ '100%': { transform: 'translateY(-20vh) scale(1.5)', opacity: '0' },
+ }
+ }
+ },
+ },
+ };
+ </script>
 <style>
-body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
-.glass-card {
-  background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.glass-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05);
-}
-.bubbly-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.bubbly-hover:hover { transform: scale(1.05); filter: brightness(1.1); }
-.nav-link { transition: all 0.3s ease; position: relative; }
-.nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: white; transition: all 0.3s ease; transform: translateX(-50%); border-radius: 2px; }
-.nav-link:hover::after { width: 100%; }
-.bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; pointer-events: none; opacity: 0.15; }
-.gradient-text { background: linear-gradient(to right, #fff 20%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-</style>
+ body {
+ font-family: 'Inter', sans-serif;
+ background-color: #0a0a0a;
+ color: #ffffff;
+ overflow-x: hidden;
+ }
+ .grid-bg {
+ background-size: 40px 40px;
+ background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+ }
+ .glass-card {
+ background: rgba(20, 20, 20, 0.6);
+ backdrop-filter: blur(10px);
+ border: 1px solid rgba(255, 255, 255, 0.1);
+ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+ .glass-card:hover {
+ transform: translateY(-8px) scale(1.02);
+ border-color: rgba(255, 255, 255, 0.2);
+ box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05);
+ }
+ .bubbly-hover {
+ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+ .bubbly-hover:hover {
+ transform: scale(1.05);
+ filter: brightness(1.1);
+ }
+ .nav-link {
+ transition: all 0.3s ease;position: relative;
+ }
+ .nav-link::after {
+ content: '';
+ position: absolute;
+ bottom: -4px;
+ left: 50%;
+ width: 0;
+ height: 2px;
+ background: white;
+ transition: all 0.3s ease;
+ transform: translateX(-50%);
+ border-radius: 2px;
+ }
+ .nav-link:hover::after {
+ width: 100%;
+ }
+ .reveal {
+ opacity: 0;
+ transform: translateY(30px) scale(0.95);
+ transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+ }
+ .reveal.active {
+ opacity: 1;
+ transform: translateY(0) scale(1);
+ }
+ .bg-orb {
+ position: fixed;
+ border-radius: 50%;
+ filter: blur(80px);
+ z-index: -1;
+ pointer-events: none;
+ opacity: 0.15;
+ }
+ .bubble {
+ position: absolute;
+ background: rgba(255, 255, 255, 0.05);
+ border-radius: 50%;
+ pointer-events: none;
+ }
+ .gradient-text {
+ background: linear-gradient(to right, #fff 20%, #666 100%);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ }
+ </style>
 </head>
 <body class="bg-background-dark text-white antialiased min-h-screen flex flex-col items-center">
-<div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%]"></div>
-<div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%]"></div>
+<div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%] animate-orb-float"></div>
+<div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%] animate-orb-float" style="animation-delay: -5s;"></div>
 <nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
 <a href="/" class="flex items-center gap-2 group cursor-pointer">
 <span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
@@ -77,11 +162,11 @@ body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffff
 </div>
 </nav>
 <main class="w-full max-w-6xl mx-auto px-6 flex flex-col gap-16 pb-32 pt-16">
-<section class="text-center max-w-2xl mx-auto">
+<section class="reveal text-center max-w-2xl mx-auto">
 <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4">The CoGrow <span class="gradient-text">Blog</span></h1>
 <p class="text-lg text-gray-400">Actionable guides to help service businesses capture more leads, respond faster, and grow revenue.</p>
 </section>
-<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<section class="reveal grid grid-cols-1 md:grid-cols-2 gap-8">
 
 <a href="/blog/insurance-broker-leads.html" class="glass-card rounded-3xl p-8 flex flex-col gap-4 no-underline">
 <div class="flex items-center gap-3 text-xs text-gray-500">
@@ -238,4 +323,36 @@ body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffff
 </div>
 </div>
 </footer>
+<script>
+ function reveal() {
+ var reveals = document.querySelectorAll(".reveal");
+ for (var i = 0; i < reveals.length; i++) {
+ var windowHeight = window.innerHeight;
+ var elementTop = reveals[i].getBoundingClientRect().top;
+ var elementVisible = 150;
+ if (elementTop < windowHeight - elementVisible) {
+ reveals[i].classList.add("active");
+ }
+ }
+ }
+ window.addEventListener("scroll", reveal);
+ reveal();
+
+ function createBubbles() {
+ const container = document.body;
+ for(let i=0; i<8; i++) {
+ const bubble = document.createElement('div');
+ bubble.className = 'bubble animate-bubble-up';
+ const size = Math.random() * 100 + 50;
+ bubble.style.width = `${size}px`;
+ bubble.style.height = `${size}px`;
+ bubble.style.left = `${Math.random() * 100}vw`;
+ bubble.style.animationDelay = `${Math.random() * 10}s`;
+ bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
+ bubble.style.opacity = '0.05';
+ container.appendChild(bubble);
+ }
+ }
+ createBubbles();
+ </script>
 </body></html>
