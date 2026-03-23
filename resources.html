@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Case Studies - CoGrow AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ primary: "#ffffff",
+ "background-dark": "#0a0a0a",
+ "surface-dark": "#141414",
+ "surface-darker": "#1a1a1a",
+ "border-dark": "#2a2a2a",
+ "text-muted": "#888888",
+ },
+ fontFamily: { display: ["Inter", "sans-serif"] },
+ borderRadius: { DEFAULT: "0.75rem" },
+ backgroundImage: { 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))' },
+ animation: {
+ 'float': 'float 6s ease-in-out infinite',
+ 'orb-float': 'orb-float 20s infinite alternate linear',
+ 'bubble-up': 'bubble-up 10s infinite ease-in-out',
+ },
+ keyframes: {
+ float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+ 'orb-float': { '0%': { transform: 'translate(0, 0) scale(1)' }, '50%': { transform: 'translate(10%, 10%) scale(1.1)' }, '100%': { transform: 'translate(-5%, 5%) scale(0.9)' } },
+ 'bubble-up': { '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' }, '50%': { opacity: '0.2' }, '100%': { transform: 'translateY(-20vh) scale(1.5)', opacity: '0' } }
+ }
+ },
+ },
+ };
+</script>
+<style>
+ body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
+ .glass-card { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+ .glass-card:hover { transform: translateY(-8px) scale(1.02); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05); }
+ .bubbly-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+ .bubbly-hover:hover { transform: scale(1.05); filter: brightness(1.1); }
+ .nav-link { transition: all 0.3s ease; position: relative; }
+ .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: white; transition: all 0.3s ease; transform: translateX(-50%); border-radius: 2px; }
+ .nav-link:hover::after { width: 100%; }
+ .reveal { opacity: 0; transform: translateY(30px) scale(0.95); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+ .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+ .bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; pointer-events: none; opacity: 0.15; }
+ .gradient-text { background: linear-gradient(to right, #fff 20%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+ .stat-pill { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+</style>
+</head>
+<body class="bg-background-dark text-white antialiased min-h-screen flex flex-col items-center">
+<div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%] animate-orb-float"></div>
+<div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%] animate-orb-float" style="animation-delay: -5s;"></div>
+
+<nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+<a href="/" class="flex items-center gap-2 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</a>
+<div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+<a class="nav-link hover:text-white" href="/resources.html">Resources</a>
+<a class="nav-link hover:text-white" href="/solutions.html">Solutions</a>
+<a class="nav-link hover:text-white" href="/contact.html">Contact</a>
+</div>
+<div class="flex items-center gap-4 text-sm">
+<a class="bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition-all bubbly-hover shadow-lg shadow-white/5" href="/book.html">Book a Call</a>
+</div>
+</nav>
+
+<main class="w-full max-w-6xl mx-auto px-6 flex flex-col gap-20 pb-32 pt-16">
+
+<!-- Hero -->
+<section class="text-center reveal active">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 mb-8">
+<span class="material-icons text-xs">auto_stories</span> Real Results
+</div>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">Case Studies</h1>
+<p class="text-lg text-gray-400 max-w-2xl mx-auto">See how real businesses transformed their lead response and revenue with CoGrow's AI systems.</p>
+</section>
+
+<!-- Case Study 1 -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-icons text-2xl">pest_control</span>
+<div>
+<h3 class="text-2xl font-bold">Reyes Pest Solutions</h3>
+<p class="text-sm text-gray-400">Pest Control &middot; Tampa, FL</p>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">The Problem</h4>
+<p class="text-gray-400">Mike Reyes was spending $4,200/month on Google Ads but missing 62% of inbound calls that came in after 5 PM or on weekends. His two-person office staff couldn't keep up, and leads were going to competitors who answered first. Average first-contact time was over 16 hours.</p>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">What CoGrow Built</h4>
+<p class="text-gray-400">A 24/7 AI response system that instantly replies to every web form, missed call, and text message. The AI qualifies the lead (pest type, property size, urgency), books the inspection directly on the tech's calendar, and sends a confirmation with pricing estimate.</p>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">Results (First 90 Days)</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">93%</p>
+<p class="text-xs text-gray-400">Response Rate</p>
+<p class="text-[10px] text-green-400">up from 38%</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">18 sec</p>
+<p class="text-xs text-gray-400">Avg First Contact</p>
+<p class="text-[10px] text-green-400">down from 16 hrs</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">+31</p>
+<p class="text-xs text-gray-400">Extra Jobs Booked</p>
+<p class="text-[10px] text-green-400">in 90 days</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">$18,600</p>
+<p class="text-xs text-gray-400">Revenue Recovered</p>
+<p class="text-[10px] text-green-400">previously lost</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Case Study 2 -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-icons text-2xl">account_balance</span>
+<div>
+<h3 class="text-2xl font-bold">Keller & Kim CPA</h3>
+<p class="text-sm text-gray-400">Accounting Firm &middot; Boston, MA</p>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">The Problem</h4>
+<p class="text-gray-400">During tax season, the 12-person firm was drowning in new client inquiries. Partners were spending 3+ hours daily on intake calls that often turned out to be unqualified (too small, wrong service need, or price shoppers). Their average response time to a new lead was 14 hours, and they estimated losing $180K in annual revenue to competitors who responded faster.</p>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">What CoGrow Built</h4>
+<p class="text-gray-400">An AI intake and qualification system that responds to every inquiry within 30 seconds. The AI asks about entity type, revenue range, current pain points, and timeline. Qualified leads get automatically booked for a partner consultation. Unqualified leads receive a polite referral to appropriate resources.</p>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">Results (First 90 Days)</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">23 min</p>
+<p class="text-xs text-gray-400">Avg First Contact</p>
+<p class="text-[10px] text-green-400">down from 14 hrs</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">+40%</p>
+<p class="text-xs text-gray-400">Close Rate</p>
+<p class="text-[10px] text-green-400">on qualified leads</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">15 hrs</p>
+<p class="text-xs text-gray-400">Partner Time Saved</p>
+<p class="text-[10px] text-green-400">per week</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">$72K</p>
+<p class="text-xs text-gray-400">New Revenue</p>
+<p class="text-[10px] text-green-400">in first quarter</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Case Study 3 -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-icons text-2xl">gavel</span>
+<div>
+<h3 class="text-2xl font-bold">Barrett Law Group</h3>
+<p class="text-sm text-gray-400">Personal Injury Law &middot; Charlotte, NC</p>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">The Problem</h4>
+<p class="text-gray-400">The 6-attorney firm was spending $22,000/month on lead generation but their intake coordinator could only work business hours. 58% of personal injury inquiries came in evenings and weekends &mdash; and those leads were calling 2-3 firms simultaneously. By the time they called back, the prospect had already retained another attorney.</p>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">What CoGrow Built</h4>
+<p class="text-gray-400">A round-the-clock AI intake system trained on the firm's case criteria. The AI captures accident details, injury severity, insurance status, and statute of limitations concerns. High-value cases trigger an immediate alert to the on-call attorney. Lower-priority cases get booked for next-day consultation.</p>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">Results (First 90 Days)</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">94%</p>
+<p class="text-xs text-gray-400">Response Rate</p>
+<p class="text-[10px] text-green-400">up from 41%</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">45 sec</p>
+<p class="text-xs text-gray-400">Avg First Contact</p>
+<p class="text-[10px] text-green-400">down from 11 hrs</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">+28</p>
+<p class="text-xs text-gray-400">Cases Retained</p>
+<p class="text-[10px] text-green-400">in 90 days</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">$340K</p>
+<p class="text-xs text-gray-400">Est. Case Value</p>
+<p class="text-[10px] text-green-400">recovered pipeline</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Case Study 4 -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-icons text-2xl">apartment</span>
+<div>
+<h3 class="text-2xl font-bold">Whitfield Property Group</h3>
+<p class="text-sm text-gray-400">Property Management &middot; Denver, CO</p>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">The Problem</h4>
+<p class="text-gray-400">Managing 340 units across 12 properties, Tom Whitfield's team was overwhelmed by tenant inquiries and prospective renter leads. Vacant unit inquiries sat unanswered for an average of 19 hours. During turnover season, they'd lose qualified applicants to properties that responded same-day. Vacancy cost the portfolio roughly $4,800 per unit per month.</p>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">What CoGrow Built</h4>
+<p class="text-gray-400">A dual-purpose AI system: one workflow handles prospective tenant inquiries (availability, pricing, scheduling tours), and another handles current tenant requests (maintenance routing, lease questions, emergency escalation). Both run 24/7 and integrate with their property management software.</p>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">Results (First 90 Days)</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">91%</p>
+<p class="text-xs text-gray-400">Inquiry Response</p>
+<p class="text-[10px] text-green-400">up from 44%</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">3 min</p>
+<p class="text-xs text-gray-400">Avg First Contact</p>
+<p class="text-[10px] text-green-400">down from 19 hrs</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">-22 days</p>
+<p class="text-xs text-gray-400">Avg Vacancy Time</p>
+<p class="text-[10px] text-green-400">per unit</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">$105K</p>
+<p class="text-xs text-gray-400">Vacancy Cost Saved</p>
+<p class="text-[10px] text-green-400">annualized</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Case Study 5 -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-icons text-2xl">hvac</span>
+<div>
+<h3 class="text-2xl font-bold">Summit Heating & Cooling</h3>
+<p class="text-sm text-gray-400">HVAC Services &middot; Phoenix, AZ</p>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">The Problem</h4>
+<p class="text-gray-400">In the Arizona summer, Summit's phones ring off the hook. Their 3-person dispatch team couldn't answer fast enough &mdash; hold times averaged 8 minutes, and 35% of callers hung up before speaking to anyone. They were spending $6,500/month on LSA and Google Ads but converting barely half the leads they paid for.</p>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">What CoGrow Built</h4>
+<p class="text-gray-400">An AI-powered missed call text-back system combined with web form instant response. When a call goes unanswered, the AI texts within 10 seconds with a personalized message. It captures the issue (AC not cooling, weird noise, annual maintenance), checks technician availability, and books the service call &mdash; all via text conversation.</p>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">Results (First 90 Days)</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">96%</p>
+<p class="text-xs text-gray-400">Lead Capture Rate</p>
+<p class="text-[10px] text-green-400">up from 52%</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">10 sec</p>
+<p class="text-xs text-gray-400">Text-Back Time</p>
+<p class="text-[10px] text-green-400">on missed calls</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">+44</p>
+<p class="text-xs text-gray-400">Extra Service Calls</p>
+<p class="text-[10px] text-green-400">in 90 days</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">$37K</p>
+<p class="text-xs text-gray-400">Revenue Recovered</p>
+<p class="text-[10px] text-green-400">from missed calls</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Case Study 6 -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-icons text-2xl">shield</span>
+<div>
+<h3 class="text-2xl font-bold">Meridian Insurance Partners</h3>
+<p class="text-sm text-gray-400">Insurance Brokerage &middot; Atlanta, GA</p>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">The Problem</h4>
+<p class="text-gray-400">Meridian's 8 producers were each spending 5-6 hours per week on initial quote request intake &mdash; gathering coverage needs, current policy details, and business info before they could even start quoting. Online quote requests piled up and average response time was 2 business days. Prospects who submitted forms on Friday didn't hear back until Tuesday.</p>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">What CoGrow Built</h4>
+<p class="text-gray-400">An AI intake workflow that immediately engages every quote request. The AI collects all necessary information (coverage type, business details, current carrier, renewal date, claims history) through a conversational text flow, then packages it into a structured brief for the assigned producer. Producers open their queue to find ready-to-quote leads.</p>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-2">Results (First 90 Days)</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">92%</p>
+<p class="text-xs text-gray-400">Response Rate</p>
+<p class="text-[10px] text-green-400">up from 40%</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">4 min</p>
+<p class="text-xs text-gray-400">Avg First Contact</p>
+<p class="text-[10px] text-green-400">down from 2 days</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">32 hrs</p>
+<p class="text-xs text-gray-400">Time Saved Weekly</p>
+<p class="text-[10px] text-green-400">across team</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<p class="text-2xl font-bold text-white">$210K</p>
+<p class="text-xs text-gray-400">New Premium Written</p>
+<p class="text-[10px] text-green-400">first quarter</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="text-center reveal">
+<div class="glass-card p-12 rounded-3xl">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Be the Next Success Story?</h2>
+<p class="text-gray-400 mb-8 max-w-lg mx-auto">Book a free strategy call and we'll show you exactly how many leads you're losing &mdash; and how to capture them.</p>
+<a href="/book.html" class="bg-white text-black px-8 py-4 rounded-full font-bold bubbly-hover shadow-2xl shadow-white/10 inline-block">Book a Call</a>
+</div>
+</section>
+
+</main>
+
+<footer class="w-full border-t border-white/10 pt-16 pb-8 px-6 bg-surface-darker relative overflow-hidden">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 relative z-10">
+<div class="max-w-xs">
+<a href="/" class="flex items-center gap-2 mb-4 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:scale-125">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</a>
+<p class="text-sm text-gray-400 mb-6">Empowering businesses with AI-driven automation to dominate their industry with intelligent workflows.</p>
+</div>
+<div class="flex gap-16">
+<div>
+<h5 class="font-semibold mb-4 text-sm">Product</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="/solutions.html">Features</a></li>
+<li><a class="nav-link hover:text-white" href="/solutions.html">Solutions</a></li>
+<li><a class="nav-link hover:text-white" href="/resources.html">Case Studies</a></li>
+<li><a class="nav-link hover:text-white" href="/#testimonials">Reviews</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-semibold mb-4 text-sm">Company</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="/about.html">About</a></li>
+<li><a class="nav-link hover:text-white" href="#">Careers</a></li>
+<li><a class="nav-link hover:text-white" href="#">Blog</a></li>
+<li><a class="nav-link hover:text-white" href="/contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-6xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 relative z-10">
+<p>&copy; 2025 CoGrow AI. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-white transition-colors bubbly-hover" href="/privacy.html">Privacy Policy</a>
+<a class="hover:text-white transition-colors bubbly-hover" href="/terms.html">Terms of Service</a>
+</div>
+</div>
+</footer>
+
+<script>
+function reveal(){var e=document.querySelectorAll(".reveal");for(var i=0;i<e.length;i++){var w=window.innerHeight;var t=e[i].getBoundingClientRect().top;if(t<w-150){e[i].classList.add("active")}}}
+window.addEventListener("scroll",reveal);reveal();
+</script>
+</body></html>

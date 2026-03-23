@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact - CoGrow AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ primary: "#ffffff",
+ "background-dark": "#0a0a0a",
+ "surface-dark": "#141414",
+ "surface-darker": "#1a1a1a",
+ "border-dark": "#2a2a2a",
+ "text-muted": "#888888",
+ },
+ fontFamily: { display: ["Inter", "sans-serif"] },
+ borderRadius: { DEFAULT: "0.75rem" },
+ backgroundImage: { 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))' },
+ animation: { 'orb-float': 'orb-float 20s infinite alternate linear' },
+ keyframes: { 'orb-float': { '0%': { transform: 'translate(0, 0) scale(1)' }, '50%': { transform: 'translate(10%, 10%) scale(1.1)' }, '100%': { transform: 'translate(-5%, 5%) scale(0.9)' } } }
+ },
+ },
+ };
+</script>
+<style>
+ body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
+ .glass-card { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+ .glass-card:hover { border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05); }
+ .bubbly-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+ .bubbly-hover:hover { transform: scale(1.05); filter: brightness(1.1); }
+ .nav-link { transition: all 0.3s ease; position: relative; }
+ .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: white; transition: all 0.3s ease; transform: translateX(-50%); border-radius: 2px; }
+ .nav-link:hover::after { width: 100%; }
+ .reveal { opacity: 0; transform: translateY(30px) scale(0.95); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+ .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+ .bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; pointer-events: none; opacity: 0.15; }
+</style>
+</head>
+<body class="bg-background-dark text-white antialiased min-h-screen flex flex-col items-center">
+<div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%] animate-orb-float"></div>
+<div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%] animate-orb-float" style="animation-delay: -5s;"></div>
+
+<nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+<a href="/" class="flex items-center gap-2 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</a>
+<div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+<a class="nav-link hover:text-white" href="/resources.html">Resources</a>
+<a class="nav-link hover:text-white" href="/solutions.html">Solutions</a>
+<a class="nav-link hover:text-white" href="/contact.html">Contact</a>
+</div>
+<div class="flex items-center gap-4 text-sm">
+<a class="bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition-all bubbly-hover shadow-lg shadow-white/5" href="/book.html">Book a Call</a>
+</div>
+</nav>
+
+<main class="w-full max-w-6xl mx-auto px-6 flex flex-col gap-20 pb-32 pt-16">
+
+<!-- Hero -->
+<section class="text-center reveal active">
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">Get in Touch</h1>
+<p class="text-lg text-gray-400 max-w-2xl mx-auto">Have a question or ready to get started? Reach out and we'll get back to you within one business day.</p>
+</section>
+
+<section class="flex flex-col md:flex-row gap-12 reveal">
+<!-- Contact Form -->
+<div class="flex-1">
+<div class="glass-card p-8 md:p-10 rounded-3xl">
+<h2 class="text-2xl font-bold mb-6">Send Us a Message</h2>
+<form action="mailto:paul@anastascompanies.com" method="POST" enctype="text/plain" class="space-y-6">
+<div>
+<label class="block text-sm text-gray-400 mb-2" for="name">Name</label>
+<input type="text" id="name" name="name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-white/30 transition-all placeholder-gray-600" placeholder="Your full name"/>
+</div>
+<div>
+<label class="block text-sm text-gray-400 mb-2" for="email">Email</label>
+<input type="email" id="email" name="email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-white/30 transition-all placeholder-gray-600" placeholder="you@company.com"/>
+</div>
+<div>
+<label class="block text-sm text-gray-400 mb-2" for="company">Company</label>
+<input type="text" id="company" name="company" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-white/30 transition-all placeholder-gray-600" placeholder="Your company name"/>
+</div>
+<div>
+<label class="block text-sm text-gray-400 mb-2" for="message">Message</label>
+<textarea id="message" name="message" rows="5" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-white/30 transition-all placeholder-gray-600 resize-none" placeholder="Tell us about your business and what you're looking for..."></textarea>
+</div>
+<button type="submit" class="w-full bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-gray-200 transition-all shadow-lg shadow-white/10">Send Message</button>
+</form>
+</div>
+</div>
+
+<!-- Contact Info + CTA -->
+<div class="flex-1 flex flex-col gap-8">
+<div class="glass-card p-8 md:p-10 rounded-3xl">
+<h2 class="text-2xl font-bold mb-6">Contact Info</h2>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="p-2 rounded-lg bg-white/5 border border-white/10">
+<span class="material-icons">email</span>
+</div>
+<div>
+<p class="text-sm text-gray-400">Email</p>
+<a href="mailto:paul@anastascompanies.com" class="text-white hover:text-gray-300 transition-colors">paul@anastascompanies.com</a>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-2 rounded-lg bg-white/5 border border-white/10">
+<span class="material-icons">location_on</span>
+</div>
+<div>
+<p class="text-sm text-gray-400">Location</p>
+<p class="text-white">Boston, MA</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="glass-card p-8 md:p-10 rounded-3xl text-center">
+<span class="material-icons text-4xl mb-4">calendar_month</span>
+<h3 class="text-xl font-bold mb-3">Prefer to Talk Live?</h3>
+<p class="text-gray-400 text-sm mb-6">Skip the form. Book a free 15-minute strategy call and we'll show you exactly how many leads you're missing.</p>
+<a href="/book.html" class="bg-white text-black px-8 py-3 rounded-full font-bold bubbly-hover shadow-xl shadow-white/10 inline-block">Book a Call Instead</a>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="w-full border-t border-white/10 pt-16 pb-8 px-6 bg-surface-darker relative overflow-hidden">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 relative z-10">
+<div class="max-w-xs">
+<a href="/" class="flex items-center gap-2 mb-4 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:scale-125">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</a>
+<p class="text-sm text-gray-400 mb-6">Empowering businesses with AI-driven automation to dominate their industry with intelligent workflows.</p>
+</div>
+<div class="flex gap-16">
+<div>
+<h5 class="font-semibold mb-4 text-sm">Product</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="/solutions.html">Features</a></li>
+<li><a class="nav-link hover:text-white" href="/solutions.html">Solutions</a></li>
+<li><a class="nav-link hover:text-white" href="/resources.html">Case Studies</a></li>
+<li><a class="nav-link hover:text-white" href="/#testimonials">Reviews</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-semibold mb-4 text-sm">Company</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="/about.html">About</a></li>
+<li><a class="nav-link hover:text-white" href="#">Careers</a></li>
+<li><a class="nav-link hover:text-white" href="#">Blog</a></li>
+<li><a class="nav-link hover:text-white" href="/contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-6xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 relative z-10">
+<p>&copy; 2025 CoGrow AI. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-white transition-colors bubbly-hover" href="/privacy.html">Privacy Policy</a>
+<a class="hover:text-white transition-colors bubbly-hover" href="/terms.html">Terms of Service</a>
+</div>
+</div>
+</footer>
+
+<script>
+function reveal(){var e=document.querySelectorAll(".reveal");for(var i=0;i<e.length;i++){var w=window.innerHeight;var t=e[i].getBoundingClientRect().top;if(t<w-150){e[i].classList.add("active")}}}
+window.addEventListener("scroll",reveal);reveal();
+</script>
+</body></html>

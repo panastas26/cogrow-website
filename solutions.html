@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Our Solutions - CoGrow AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ primary: "#ffffff",
+ "background-dark": "#0a0a0a",
+ "surface-dark": "#141414",
+ "surface-darker": "#1a1a1a",
+ "border-dark": "#2a2a2a",
+ "text-muted": "#888888",
+ },
+ fontFamily: { display: ["Inter", "sans-serif"] },
+ borderRadius: { DEFAULT: "0.75rem" },
+ backgroundImage: { 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))' },
+ animation: {
+ 'float': 'float 6s ease-in-out infinite',
+ 'orb-float': 'orb-float 20s infinite alternate linear',
+ },
+ keyframes: {
+ float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+ 'orb-float': { '0%': { transform: 'translate(0, 0) scale(1)' }, '50%': { transform: 'translate(10%, 10%) scale(1.1)' }, '100%': { transform: 'translate(-5%, 5%) scale(0.9)' } },
+ }
+ },
+ },
+ };
+</script>
+<style>
+ body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
+ .glass-card { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+ .glass-card:hover { transform: translateY(-8px) scale(1.02); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05); }
+ .bubbly-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+ .bubbly-hover:hover { transform: scale(1.05); filter: brightness(1.1); }
+ .nav-link { transition: all 0.3s ease; position: relative; }
+ .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: white; transition: all 0.3s ease; transform: translateX(-50%); border-radius: 2px; }
+ .nav-link:hover::after { width: 100%; }
+ .reveal { opacity: 0; transform: translateY(30px) scale(0.95); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+ .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+ .bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; pointer-events: none; opacity: 0.15; }
+ .gradient-text { background: linear-gradient(to right, #fff 20%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+ .pricing-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+ .pricing-card:hover { transform: translateY(-8px) scale(1.02); }
+</style>
+</head>
+<body class="bg-background-dark text-white antialiased min-h-screen flex flex-col items-center">
+<div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%] animate-orb-float"></div>
+<div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%] animate-orb-float" style="animation-delay: -5s;"></div>
+
+<nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+<a href="/" class="flex items-center gap-2 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</a>
+<div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+<a class="nav-link hover:text-white" href="/resources.html">Resources</a>
+<a class="nav-link hover:text-white" href="/solutions.html">Solutions</a>
+<a class="nav-link hover:text-white" href="/contact.html">Contact</a>
+</div>
+<div class="flex items-center gap-4 text-sm">
+<a class="bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition-all bubbly-hover shadow-lg shadow-white/5" href="/book.html">Book a Call</a>
+</div>
+</nav>
+
+<main class="w-full max-w-6xl mx-auto px-6 flex flex-col gap-20 pb-32 pt-16">
+
+<!-- Hero -->
+<section class="text-center reveal active">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 mb-8">
+<span class="material-icons text-xs">settings_suggest</span> Our Solutions
+</div>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">Everything You Need to<br/><span class="gradient-text">Never Miss a Lead</span></h1>
+<p class="text-lg text-gray-400 max-w-2xl mx-auto">Purpose-built AI systems that capture, qualify, and convert every inquiry &mdash; so you stop paying for leads you never follow up on.</p>
+</section>
+
+<!-- Solution 1: Speed-to-Lead -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="p-4 rounded-2xl bg-white/5 border border-white/10 shrink-0">
+<span class="material-icons text-4xl">bolt</span>
+</div>
+<div class="flex-1">
+<h2 class="text-3xl font-bold mb-2">Speed-to-Lead AI System</h2>
+<p class="text-sm text-gray-400 mb-6">Instant response to every inquiry, 24/7/365</p>
+<p class="text-gray-300 mb-8">The moment a lead fills out a form, sends a text, or calls your number, our AI responds within seconds &mdash; not hours. It introduces your business, acknowledges their need, and moves them toward booking. No missed calls. No voicemail black holes. No leads lost to competitors who answered first.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Responds in under 30 seconds
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Works across text, web, and missed calls
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Custom-trained on your business
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> After-hours and weekend coverage
+</div>
+</div>
+<p class="text-xs text-gray-500">Best for: Any business spending on lead gen that can't respond 24/7</p>
+</div>
+</div>
+</section>
+
+<!-- Solution 2: AI Intake + Qualification -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="p-4 rounded-2xl bg-white/5 border border-white/10 shrink-0">
+<span class="material-icons text-4xl">filter_alt</span>
+</div>
+<div class="flex-1">
+<h2 class="text-3xl font-bold mb-2">AI Intake & Qualification</h2>
+<p class="text-sm text-gray-400 mb-6">Pre-qualifies leads before they ever reach you</p>
+<p class="text-gray-300 mb-8">Stop wasting partner and owner time on unqualified leads. Our AI conducts a natural conversation to gather the information you need: service type, budget range, timeline, and deal-breaker criteria. Qualified leads get booked directly on your calendar. Unqualified leads receive a polite redirect &mdash; automatically.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Custom qualification criteria per service
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Auto-books qualified leads on your calendar
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Structured lead briefs for your team
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Polite handling of unqualified prospects
+</div>
+</div>
+<p class="text-xs text-gray-500">Best for: Professional services firms (CPA, law, insurance) with high-value engagements</p>
+</div>
+</div>
+</section>
+
+<!-- Solution 3: Automated Follow-Up -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="p-4 rounded-2xl bg-white/5 border border-white/10 shrink-0">
+<span class="material-icons text-4xl">autorenew</span>
+</div>
+<div class="flex-1">
+<h2 class="text-3xl font-bold mb-2">Automated Follow-Up Sequences</h2>
+<p class="text-sm text-gray-400 mb-6">Nurtures leads that don't book immediately</p>
+<p class="text-gray-300 mb-8">Most leads don't convert on first touch. Our AI runs intelligent follow-up sequences via text and email &mdash; checking in at the right intervals, addressing objections, and making it easy to book when they're ready. No manual tracking. No leads falling through the cracks.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Multi-touch sequences over days/weeks
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Personalized based on lead's initial inquiry
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Stops automatically when lead books or opts out
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Re-engagement campaigns for cold leads
+</div>
+</div>
+<p class="text-xs text-gray-500">Best for: Businesses with longer sales cycles or seasonal demand</p>
+</div>
+</div>
+</section>
+
+<!-- Solution 4: Reporting Dashboard -->
+<section class="glass-card p-8 md:p-12 rounded-3xl reveal">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="p-4 rounded-2xl bg-white/5 border border-white/10 shrink-0">
+<span class="material-icons text-4xl">analytics</span>
+</div>
+<div class="flex-1">
+<h2 class="text-3xl font-bold mb-2">Client Reporting Dashboard</h2>
+<p class="text-sm text-gray-400 mb-6">Real-time visibility into lead flow and response metrics</p>
+<p class="text-gray-300 mb-8">See exactly what's happening with your leads in real time. Track response times, conversion rates, lead sources, and AI conversation outcomes. Know which campaigns are driving results and where leads are dropping off. No more guessing &mdash; just data.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Real-time lead flow visualization
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Response time tracking by channel
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Conversion funnel analytics
+</div>
+<div class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Weekly automated email reports
+</div>
+</div>
+<p class="text-xs text-gray-500">Best for: Business owners who want visibility without micromanaging</p>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+<section class="reveal" id="pricing">
+<div class="text-center mb-12">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 mb-8">
+<span class="material-icons text-xs">payments</span> Simple Pricing
+</div>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Transparent Pricing</h2>
+<p class="text-gray-400 text-lg max-w-xl mx-auto">No setup fees. No long-term contracts. Just results.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+<!-- Field Services -->
+<div class="pricing-card bg-surface-darker border border-white/10 rounded-3xl p-8 md:p-10 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-40 h-40 bg-gradient-radial from-white/5 to-transparent -z-0"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-icons">construction</span>
+<h3 class="text-xl font-bold">Field Services</h3>
+</div>
+<p class="text-sm text-gray-400 mb-6">Pest control, HVAC, electrical, plumbing, and more</p>
+<div class="mb-8">
+<span class="text-5xl font-bold">$400</span>
+<span class="text-gray-400">/month</span>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Speed-to-Lead AI System
+</li>
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Missed call text-back
+</li>
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Automated follow-up sequences
+</li>
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Calendar booking integration
+</li>
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Reporting dashboard
+</li>
+</ul>
+<a href="/book.html" class="block text-center bg-white/10 border border-white/20 text-white px-6 py-3 rounded-full font-medium hover:bg-white/20 transition-all">Get Started</a>
+</div>
+</div>
+
+<!-- Professional Services -->
+<div class="pricing-card bg-surface-darker border border-white/20 rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-xl shadow-white/5">
+<div class="absolute top-0 right-0 w-40 h-40 bg-gradient-radial from-white/10 to-transparent -z-0"></div>
+<div class="absolute top-4 right-4 bg-white text-black text-[10px] font-bold px-3 py-1 rounded-full z-10">MOST POPULAR</div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-icons">architecture</span>
+<h3 class="text-xl font-bold">Professional Services</h3>
+</div>
+<p class="text-sm text-gray-400 mb-6">CPA firms, law firms, insurance, property management</p>
+<div class="mb-8">
+<span class="text-5xl font-bold">$2,500</span>
+<span class="text-gray-400">-$3,500/month</span>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Everything in Field Services
+</li>
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> AI Intake & Qualification system
+</li>
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Custom qualification criteria
+</li>
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Structured lead briefs
+</li>
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Priority support & strategy calls
+</li>
+<li class="flex items-center gap-3 text-sm text-gray-300">
+<span class="material-icons text-xs text-green-400">check_circle</span> Multi-channel integration
+</li>
+</ul>
+<a href="/book.html" class="block text-center bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-gray-200 transition-all shadow-lg shadow-white/10">Get Started</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="text-center reveal">
+<div class="glass-card p-12 rounded-3xl">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Not Sure Which Plan Is Right?</h2>
+<p class="text-gray-400 mb-8 max-w-lg mx-auto">Book a free strategy call. We'll audit your current lead flow and recommend exactly what you need.</p>
+<a href="/book.html" class="bg-white text-black px-8 py-4 rounded-full font-bold bubbly-hover shadow-2xl shadow-white/10 inline-block">Book a Free Strategy Call</a>
+</div>
+</section>
+
+</main>
+
+<footer class="w-full border-t border-white/10 pt-16 pb-8 px-6 bg-surface-darker relative overflow-hidden">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 relative z-10">
+<div class="max-w-xs">
+<a href="/" class="flex items-center gap-2 mb-4 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:scale-125">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</a>
+<p class="text-sm text-gray-400 mb-6">Empowering businesses with AI-driven automation to dominate their industry with intelligent workflows.</p>
+</div>
+<div class="flex gap-16">
+<div>
+<h5 class="font-semibold mb-4 text-sm">Product</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="/solutions.html">Features</a></li>
+<li><a class="nav-link hover:text-white" href="/solutions.html">Solutions</a></li>
+<li><a class="nav-link hover:text-white" href="/resources.html">Case Studies</a></li>
+<li><a class="nav-link hover:text-white" href="/#testimonials">Reviews</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-semibold mb-4 text-sm">Company</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="/about.html">About</a></li>
+<li><a class="nav-link hover:text-white" href="#">Careers</a></li>
+<li><a class="nav-link hover:text-white" href="#">Blog</a></li>
+<li><a class="nav-link hover:text-white" href="/contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-6xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 relative z-10">
+<p>&copy; 2025 CoGrow AI. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-white transition-colors bubbly-hover" href="/privacy.html">Privacy Policy</a>
+<a class="hover:text-white transition-colors bubbly-hover" href="/terms.html">Terms of Service</a>
+</div>
+</div>
+</footer>
+
+<script>
+function reveal(){var e=document.querySelectorAll(".reveal");for(var i=0;i<e.length;i++){var w=window.innerHeight;var t=e[i].getBoundingClientRect().top;if(t<w-150){e[i].classList.add("active")}}}
+window.addEventListener("scroll",reveal);reveal();
+</script>
+</body></html>
