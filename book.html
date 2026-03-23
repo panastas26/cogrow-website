@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book a Free Audit - CoGrow AI</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        fontFamily: { display: ["Inter", "sans-serif"] },
+        colors: {
+          "background-dark": "#0a0a0a",
+          "surface-darker": "#1a1a1a",
+        }
+      }
+    }
+  };
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+  .nav-link { transition: all 0.3s ease; position: relative; }
+  .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: white; transition: all 0.3s ease; transform: translateX(-50%); border-radius: 2px; }
+  .nav-link:hover::after { width: 100%; }
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<!-- Nav -->
+<nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5">
+  <a href="/" class="flex items-center gap-2 group cursor-pointer">
+    <span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
+    <span class="font-bold text-xl tracking-tight">CoGrow</span>
+  </a>
+  <div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+    <a class="nav-link hover:text-white" href="/">Home</a>
+    <a class="nav-link hover:text-white" href="#">Resources</a>
+    <a class="nav-link hover:text-white" href="#">Solutions</a>
+    <a class="nav-link hover:text-white" href="#">Contact</a>
+  </div>
+  <a href="/book.html" class="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-all">Book a Call</a>
+</nav>
+
+<!-- Hero -->
+<div class="w-full max-w-6xl mx-auto px-6 pt-16 pb-8 text-center">
+  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 mb-6">
+    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+    Free 30-minute audit - no obligation
+  </div>
+  <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Book Your Free AI Audit</h1>
+  <p class="text-gray-400 text-lg max-w-xl mx-auto">We'll analyze your current lead response process and show you exactly how much revenue you're leaving on the table.</p>
+</div>
+
+<!-- Cal.com Embed -->
+<div class="flex-1 w-full max-w-5xl mx-auto px-6 pb-16">
+  <div class="rounded-2xl overflow-hidden border border-white/10 bg-[#141414]" style="min-height: 700px;">
+    <iframe
+      src="https://cal.com/cogrowai/freeaudit?embed=true&theme=dark"
+      width="100%"
+      height="700"
+      frameborder="0"
+      style="border-radius: 1rem;"
+      title="Book a Free Audit with CoGrow"
+    ></iframe>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="border-t border-white/10 py-6 px-6 text-center text-xs text-gray-500">
+  <p>© 2025 CoGrow AI. All rights reserved. | <a href="/" class="hover:text-white transition-colors">Back to Home</a></p>
+</footer>
+
+</body>
+</html>
