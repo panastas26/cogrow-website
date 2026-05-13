@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<meta property="og:image" content="https://cogrow.ai/logo.svg"/>
+<meta property="og:title" content="AI Workflows — CoGrow AI"/>
+<meta property="og:description" content="Your data lives in 8 tools. So does the work that depends on it. We bring it together with CoGrow AI — and automate what comes next."/>
+<meta property="og:url" content="https://cogrow.ai/workflows.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://cogrow.ai/logo.svg"/>
+<meta name="description" content="Custom AI workflows that connect your business tools and automate the work between them. Integrations across CRMs, accounting, BI, comms — drafted in your voice, manager-approved."/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Workflows — CoGrow AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ primary: "#ffffff",
+ "background-light": "#f3f4f6",
+ "background-dark": "#0a0a0a",
+ "surface-dark": "#141414",
+ "surface-darker": "#1a1a1a",
+ "border-dark": "#2a2a2a",
+ "text-muted": "#888888",
+ },
+ fontFamily: { display: ["Inter", "sans-serif"] },
+ borderRadius: { DEFAULT: "0.75rem" },
+ backgroundImage: { 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))' },
+ animation: {
+ 'float': 'float 6s ease-in-out infinite',
+ 'orb-float': 'orb-float 20s infinite alternate linear',
+ 'bubble-up': 'bubble-up 10s infinite ease-in-out',
+ 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+ },
+ keyframes: {
+ float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+ 'orb-float': { '0%': { transform: 'translate(0, 0) scale(1)' }, '50%': { transform: 'translate(10%, 10%) scale(1.1)' }, '100%': { transform: 'translate(-5%, 5%) scale(0.9)' } },
+ 'bubble-up': { '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' }, '50%': { opacity: '0.2' }, '100%': { transform: 'translateY(-20vh) scale(1.5)', opacity: '0' } }
+ }
+ },
+ },
+ };
+ </script>
+<style>
+ body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
+ .grid-bg { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px); }
+ .glass-card { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+ .glass-card:hover { transform: translateY(-8px) scale(1.02); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05); }
+ .bubbly-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+ .bubbly-hover:hover { transform: scale(1.05); filter: brightness(1.1); }
+ .nav-link { transition: all 0.3s ease; position: relative; }
+ .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: white; transition: all 0.3s ease; transform: translateX(-50%); border-radius: 2px; }
+ .nav-link:hover::after { width: 100%; }
+ .reveal { opacity: 0; transform: translateY(30px) scale(0.95); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+ .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+ .bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; pointer-events: none; opacity: 0.15; }
+ .gradient-text { background: linear-gradient(to right, #fff 20%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+ .hub-node { background: #0a0a0a; color: #fff; border: 2px solid #22c55e; box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.12); }
+ .tool-node { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
+ </style>
+</head>
+<body class="bg-background-dark text-white antialiased min-h-screen flex flex-col items-center">
+<div class="bg-orb w-[600px] h-[600px] bg-white top-[-10%] left-[-10%] animate-orb-float"></div>
+<div class="bg-orb w-[400px] h-[400px] bg-gray-500 bottom-[10%] right-[-5%] animate-orb-float" style="animation-delay: -5s;"></div>
+
+<nav class="w-full max-w-6xl mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+<a href="/" class="flex items-center gap-2 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:rotate-12">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</a>
+<div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+<a class="nav-link hover:text-white" href="/">Home</a>
+<a class="nav-link hover:text-white" href="/about.html">About</a>
+<a class="nav-link hover:text-white" href="/solutions.html">Solutions</a>
+<a class="nav-link text-white" href="/workflows.html">Workflows</a>
+<a class="nav-link hover:text-white" href="/resources.html">Resources</a>
+<a class="nav-link hover:text-white" href="/blog/index.html">Blog</a>
+<a class="nav-link hover:text-white" href="/contact.html">Contact</a>
+</div>
+<div class="flex items-center gap-4 text-sm">
+<a class="bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition-all bubbly-hover shadow-lg shadow-white/5" href="/book.html">Book a Call</a>
+</div>
+</nav>
+
+<main class="w-full max-w-6xl mx-auto px-6 flex flex-col gap-24 pb-32 pt-16">
+
+<!-- Hero -->
+<section class="relative grid-bg rounded-3xl overflow-hidden border border-white/5 p-8 md:p-16 reveal active">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-white/5 to-transparent rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+<div class="flex flex-col md:flex-row items-start gap-12 relative z-10">
+<div class="flex-1 max-w-xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 mb-8 animate-float">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+ AI Workflows
+ </div>
+<h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">Your data lives in 8 tools.<br/><span class="gradient-text">So does the work that depends on it.</span></h1>
+<p class="text-lg text-gray-400 mb-10 max-w-md">We bring it together with CoGrow AI — and automate what comes next. Custom integrations that connect your existing tools so the work happens automatically, in your voice, without replacing your stack.</p>
+<div class="flex flex-wrap items-center gap-4">
+<a href="/book.html" class="bg-white text-black px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-gray-200 transition-all bubbly-hover shadow-xl shadow-white/10">
+ Scope a Workflow Free
+ <span class="material-icons text-sm">arrow_forward</span>
+</a>
+<a href="#how-it-works" class="bg-surface-darker border border-white/10 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 transition-all bubbly-hover">
+ How It Works
+ <span class="material-icons text-sm">south</span>
+</a>
+</div>
+</div>
+<!-- Diagram: fragmented tools converging on CoGrow AI hub -->
+<div class="hidden md:block relative w-[360px] h-[280px]">
+<svg class="absolute inset-0 w-full h-full" viewBox="0 0 360 280" preserveAspectRatio="none">
+<line x1="50" y1="50" x2="180" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<line x1="30" y1="140" x2="180" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<line x1="50" y1="230" x2="180" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<line x1="180" y1="30" x2="180" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<line x1="180" y1="250" x2="180" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<line x1="310" y1="50" x2="180" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<line x1="330" y1="140" x2="180" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+<line x1="310" y1="230" x2="180" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+</svg>
+<div class="tool-node absolute rounded-lg flex items-center justify-center" style="left:32px;top:32px;width:36px;height:36px;font-size:11px;font-weight:700;">CRM</div>
+<div class="tool-node absolute rounded-lg flex items-center justify-center" style="left:12px;top:122px;width:36px;height:36px;font-size:11px;font-weight:700;">$$</div>
+<div class="tool-node absolute rounded-lg flex items-center justify-center" style="left:32px;top:212px;width:36px;height:36px;font-size:11px;font-weight:700;">★</div>
+<div class="tool-node absolute rounded-lg flex items-center justify-center" style="left:162px;top:12px;width:36px;height:36px;font-size:11px;font-weight:700;">@</div>
+<div class="tool-node absolute rounded-lg flex items-center justify-center" style="left:162px;top:232px;width:36px;height:36px;font-size:11px;font-weight:700;">▦</div>
+<div class="tool-node absolute rounded-lg flex items-center justify-center" style="left:292px;top:32px;width:36px;height:36px;font-size:11px;font-weight:700;">DB</div>
+<div class="tool-node absolute rounded-lg flex items-center justify-center" style="left:312px;top:122px;width:36px;height:36px;font-size:11px;font-weight:700;">⚙</div>
+<div class="tool-node absolute rounded-lg flex items-center justify-center" style="left:292px;top:212px;width:36px;height:36px;font-size:11px;font-weight:700;">✉</div>
+<div class="hub-node absolute rounded-full px-5 py-3 font-bold text-sm" style="left:50%;top:50%;transform:translate(-50%,-50%);white-space:nowrap;">CoGrow AI</div>
+</div>
+</div>
+</section>
+
+<!-- Why now? -->
+<section class="reveal">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-2 text-sm text-gray-400 mb-4">
+<span class="material-icons text-xs">schedule</span>
+ Why now?
+ </div>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-8 text-gray-200">The work between your tools<br/><span class="text-white">is eating your week.</span></h2>
+<div class="space-y-5 text-lg text-gray-300">
+<p>Every business runs on 5–10 SaaS tools. CRMs, accounting platforms, communication tools, BI dashboards, calendars. <span class="text-white font-semibold">They don't talk to each other.</span></p>
+<p>So instead of running your business, you spend your week stitching data together by hand — pulling reports, copy-pasting between tabs, rebuilding the same dashboards, drafting the same emails. Hours every week. Sometimes a full day.</p>
+<p>That's the work that should be automated. Not replaced — <span class="text-white font-semibold">automated.</span> So the work still gets done, sounds like you, and stops eating your week.</p>
+</div>
+</div>
+</section>
+
+<!-- What we build -->
+<section class="reveal">
+<div class="max-w-2xl mb-12">
+<div class="inline-flex items-center gap-2 text-sm text-gray-400 mb-4">
+<span class="material-icons text-xs">construction</span>
+ What we build
+ </div>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gray-200">Workflows we've shipped<br/><span class="text-white">across industries.</span></h2>
+<p class="text-gray-400 text-lg">Industry-agnostic by design. Pick the workflows that map to where your time actually goes.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="glass-card p-6 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4"><span class="material-icons text-white">trending_up</span></div>
+<h3 class="text-xl font-bold mb-2">Sales orchestration</h3>
+<p class="text-sm text-gray-400">Pipeline reviews, coaching prep, 1:1 docs, MBR drafts, deal hygiene. Pulls from your CRM, SEP, BI, and conversation intelligence — outputs in your voice.</p>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4"><span class="material-icons text-white">receipt_long</span></div>
+<h3 class="text-xl font-bold mb-2">Operations &amp; back-office</h3>
+<p class="text-sm text-gray-400">Bookkeeping flows, invoice/bill capture, reconciliation assists, K1 prep, document intake — built around the accounting and ops tools you already use.</p>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4"><span class="material-icons text-white">forum</span></div>
+<h3 class="text-xl font-bold mb-2">Lead routing &amp; follow-up</h3>
+<p class="text-sm text-gray-400">Inbound triage by territory, account, or rule. Instant qualified response. Hand-off to the right person — no leads sit overnight.</p>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4"><span class="material-icons text-white">dashboard</span></div>
+<h3 class="text-xl font-bold mb-2">Unified reporting</h3>
+<p class="text-sm text-gray-400">One live dashboard pulling activity, revenue, response times, and team output from all your tools. Know what's happening without asking.</p>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4"><span class="material-icons text-white">support_agent</span></div>
+<h3 class="text-xl font-bold mb-2">Inbound triage</h3>
+<p class="text-sm text-gray-400">Customer support, partner referrals, escalations — routed by territory, account, or rule. Drafts in your voice, ready to send.</p>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4"><span class="material-icons text-white">extension</span></div>
+<h3 class="text-xl font-bold mb-2">Custom</h3>
+<p class="text-sm text-gray-400">Show us your week. We'll show you what's automatable — and what isn't worth touching.</p>
+</div>
+</div>
+</section>
+
+<!-- How it works -->
+<section id="how-it-works" class="reveal">
+<div class="max-w-2xl mb-12">
+<div class="inline-flex items-center gap-2 text-sm text-gray-400 mb-4">
+<span class="material-icons text-xs">route</span>
+ How it works
+ </div>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gray-200">From discovery<br/><span class="text-white">to live in weeks.</span></h2>
+<p class="text-gray-400 text-lg">A clear path from "we have too many tools" to "the work runs itself."</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="glass-card p-6 rounded-2xl">
+<div class="text-[10px] uppercase tracking-widest text-gray-500 mb-3">Step 1</div>
+<div class="flex items-center gap-3 mb-3"><span class="material-icons text-white">search</span><h3 class="text-lg font-bold">Discovery</h3></div>
+<p class="text-sm text-gray-400 mb-2">30-min call, free.</p>
+<p class="text-sm text-gray-400">We look at your tool stack and the work that's eating your week.</p>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="text-[10px] uppercase tracking-widest text-gray-500 mb-3">Step 2</div>
+<div class="flex items-center gap-3 mb-3"><span class="material-icons text-white">my_location</span><h3 class="text-lg font-bold">Scope</h3></div>
+<p class="text-sm text-gray-400 mb-2">One-page diagnostic.</p>
+<p class="text-sm text-gray-400">We identify the 1–3 workflows that save the most hours fastest.</p>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="text-[10px] uppercase tracking-widest text-gray-500 mb-3">Step 3</div>
+<div class="flex items-center gap-3 mb-3"><span class="material-icons text-white">build</span><h3 class="text-lg font-bold">Build</h3></div>
+<p class="text-sm text-gray-400 mb-2">1–3 weeks per workflow.</p>
+<p class="text-sm text-gray-400">Connected to your tools, drafted in your voice, manager-approved before it ships.</p>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="text-[10px] uppercase tracking-widest text-gray-500 mb-3">Step 4</div>
+<div class="flex items-center gap-3 mb-3"><span class="material-icons text-white">tune</span><h3 class="text-lg font-bold">Tune &amp; maintain</h3></div>
+<p class="text-sm text-gray-400 mb-2">Monthly retainer.</p>
+<p class="text-sm text-gray-400">We keep it sharp as your stack, team, and goals change. Add new workflows anytime.</p>
+</div>
+</div>
+</section>
+
+<!-- What makes ours different -->
+<section class="reveal">
+<div class="max-w-2xl mb-12">
+<div class="inline-flex items-center gap-2 text-sm text-gray-400 mb-4">
+<span class="material-icons text-xs">verified</span>
+ What makes ours different
+ </div>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gray-200">Not a chatbot.<br/><span class="text-white">A purpose-built layer.</span></h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card p-8 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5"><span class="material-icons text-white">hub</span></div>
+<h3 class="text-xl font-bold mb-3">Built around your tools, not the other way around.</h3>
+<p class="text-sm text-gray-400">We connect what you already use — Salesforce, QuickBooks, Slack, Gmail, your CRM, your BI. No "switch to our platform." No vendor lock-in.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5"><span class="material-icons text-white">record_voice_over</span></div>
+<h3 class="text-xl font-bold mb-3">Voice-cloned outputs.</h3>
+<p class="text-sm text-gray-400">Drafts sound like you, not like ChatGPT. We learn from your prior emails, docs, and decks — and bake in a banned-phrase list so nothing slips through.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5"><span class="material-icons text-white">supervised_user_circle</span></div>
+<h3 class="text-xl font-bold mb-3">Manager in the loop.</h3>
+<p class="text-sm text-gray-400">Every artifact is draft-mode. You approve before it sends. No autopilot — your judgment stays the final word.</p>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+<section class="reveal">
+<div class="glass-card p-8 md:p-12 rounded-3xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-60 h-60 bg-gradient-radial from-white/5 to-transparent -z-0"></div>
+<div class="relative z-10 grid md:grid-cols-3 gap-10">
+<div class="md:col-span-1">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 mb-4"><span class="material-icons text-xs">payments</span> Pricing</div>
+<h2 class="text-4xl font-bold tracking-tight mb-4">Per workflow.<br/>No annual contracts.</h2>
+<p class="text-gray-400 mb-6">Start with one. Add more as you see what they unlock. Cancel maintenance anytime.</p>
+</div>
+<div class="md:col-span-2 grid sm:grid-cols-2 gap-4">
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+<div class="text-[10px] uppercase tracking-widest text-gray-500 mb-2">Build</div>
+<p class="text-4xl font-bold tracking-tight mb-1">$3,000</p>
+<p class="text-sm text-gray-400 mb-4">per workflow, one-time</p>
+<ul class="text-sm text-gray-300 space-y-2">
+<li class="flex items-start gap-2"><span class="material-icons text-xs mt-0.5">check</span> Scoped from your tools and process</li>
+<li class="flex items-start gap-2"><span class="material-icons text-xs mt-0.5">check</span> Voice-cloned outputs</li>
+<li class="flex items-start gap-2"><span class="material-icons text-xs mt-0.5">check</span> Manager-in-the-loop drafts</li>
+<li class="flex items-start gap-2"><span class="material-icons text-xs mt-0.5">check</span> Live in 1–3 weeks</li>
+</ul>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+<div class="text-[10px] uppercase tracking-widest text-gray-500 mb-2">Maintain</div>
+<p class="text-4xl font-bold tracking-tight mb-1">+ $500<span class="text-base text-gray-400 font-normal">/mo</span></p>
+<p class="text-sm text-gray-400 mb-4">retainer, no contract</p>
+<ul class="text-sm text-gray-300 space-y-2">
+<li class="flex items-start gap-2"><span class="material-icons text-xs mt-0.5">check</span> Monitoring &amp; uptime checks</li>
+<li class="flex items-start gap-2"><span class="material-icons text-xs mt-0.5">check</span> Voice &amp; rubric tuning</li>
+<li class="flex items-start gap-2"><span class="material-icons text-xs mt-0.5">check</span> Tool-stack updates as your business changes</li>
+<li class="flex items-start gap-2"><span class="material-icons text-xs mt-0.5">check</span> Add new workflows anytime</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Final CTA -->
+<section class="text-center reveal">
+<div class="glass-card p-12 rounded-3xl">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to see what's automatable?</h2>
+<p class="text-gray-400 mb-8 max-w-lg mx-auto">Book a free 30-minute scope call. We'll look at your tool stack and your week — and tell you the workflow that would save the most hours fastest.</p>
+<a href="/book.html" class="bg-white text-black px-8 py-4 rounded-full font-bold bubbly-hover shadow-2xl shadow-white/10 inline-block">Scope a Workflow Free</a>
+</div>
+</section>
+
+</main>
+
+<footer class="w-full border-t border-white/10 pt-16 pb-8 px-6 bg-surface-darker relative overflow-hidden">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16 relative z-10">
+<div class="max-w-xs">
+<a href="/" class="flex items-center gap-2 mb-4 group cursor-pointer">
+<span class="material-icons text-white transition-transform group-hover:scale-125">bubble_chart</span>
+<span class="font-bold text-xl tracking-tight">CoGrow</span>
+</a>
+<p class="text-sm text-gray-400 mb-6">AI workflows for the work between your tools.</p>
+</div>
+<div class="flex gap-16">
+<div>
+<h5 class="font-semibold mb-4 text-sm">Product</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="/solutions.html">Solutions</a></li>
+<li><a class="nav-link hover:text-white" href="/workflows.html">Workflows</a></li>
+<li><a class="nav-link hover:text-white" href="/resources.html">Case Studies</a></li>
+<li><a class="nav-link hover:text-white" href="/#testimonials">Reviews</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-semibold mb-4 text-sm">Company</h5>
+<ul class="flex flex-col gap-2 text-sm text-gray-400">
+<li><a class="nav-link hover:text-white" href="/about.html">About</a></li>
+<li><a class="nav-link hover:text-white" href="/blog/index.html">Blog</a></li>
+<li><a class="nav-link hover:text-white" href="/contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-6xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 relative z-10">
+<p>&copy; 2026 CoGrow AI. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-white transition-colors bubbly-hover" href="/privacy.html">Privacy Policy</a>
+<a class="hover:text-white transition-colors bubbly-hover" href="/terms.html">Terms of Service</a>
+</div>
+</div>
+</footer>
+
+<script>
+function reveal(){var e=document.querySelectorAll(".reveal");for(var i=0;i<e.length;i++){var w=window.innerHeight;var t=e[i].getBoundingClientRect().top;if(t<w-150){e[i].classList.add("active")}}}
+window.addEventListener("scroll",reveal);reveal();
+</script>
+</body></html>
