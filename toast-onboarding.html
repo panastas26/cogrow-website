@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Toast Websites onboarding — CoGrow</title>
+  <meta name="description" content="Send CoGrow the content and brand assets for your Toast Websites build.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/toast-onboarding.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+  <script src="/toast-onboarding.js" defer></script>
+</head>
+<body>
+  <header class="head"><div class="wrap"><a class="brand" href="/"><i><b></b><b></b><b></b></i>CoGrow</a><span class="mono dim">Client onboarding</span></div></header>
+  <main>
+    <section class="intake-hero"><div class="wrap">
+      <p class="mono lime">Toast Websites · Build intake</p>
+      <h1>Let's get your site <span class="lime">ready to build.</span></h1>
+      <p class="intake-lede">Send us the words, photos and brand files you want on your new site. Once scope and Toast access are confirmed, we'll build in your account and return a draft for review.</p>
+      <div class="scope-strip"><span><strong>$499</strong> one-time build</span><span>One location</span><span>Up to three content pages</span><span>One edit round</span></div>
+    </div></section>
+
+    <div class="wrap intake-layout">
+      <aside class="intake-side">
+        <p class="mono lime">Your progress</p>
+        <h2>Four short steps.</h2>
+        <ol class="step-list" aria-label="Onboarding steps">
+          <li class="current"><b>Restaurant</b><span>Who we are building for</span></li>
+          <li><b>Website</b><span>Pages and Toast links</span></li>
+          <li><b>Assets</b><span>Photos, logo and copy files</span></li>
+          <li><b>Review</b><span>Check and send</span></li>
+        </ol>
+        <div class="access-note"><b>Toast access comes separately.</b><p>We'll coordinate editor access with you. Please do not send a Toast password, payment information or customer data in this form.</p></div>
+      </aside>
+
+      <form id="toast-intake" class="intake-form" enctype="multipart/form-data" novalidate>
+        <div class="progress-head"><span id="progress-label" class="mono lime">Step 1 of 4</span><span id="progress-percent" class="mono dim">25%</span></div>
+        <div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div>
+
+        <section class="step-panel" data-step="0" aria-labelledby="step-restaurant">
+          <div class="form-heading"><p class="mono lime">01 / Restaurant</p><h2 id="step-restaurant">Tell us about your restaurant.</h2><p>We'll use this to identify your project and follow up with the right person.</p></div>
+          <div class="fields two">
+            <label>Restaurant name <em>*</em><input name="restaurantName" autocomplete="organization" required maxlength="120"></label>
+            <label>Contact name <em>*</em><input name="contactName" autocomplete="name" required maxlength="120"></label>
+            <label>Email <em>*</em><input type="email" name="email" autocomplete="email" required maxlength="200"></label>
+            <label>Phone <input type="tel" name="phone" autocomplete="tel" maxlength="40"></label>
+            <label class="full">Current website or social page <input type="url" name="currentUrl" placeholder="https://" maxlength="500"></label>
+            <label class="full">Restaurant address <span class="hint">The address guests should see, if you want it on the site.</span><input name="restaurantAddress" autocomplete="street-address" maxlength="300"></label>
+          </div>
+        </section>
+
+        <section class="step-panel" data-step="1" aria-labelledby="step-website" hidden>
+          <div class="form-heading"><p class="mono lime">02 / Website</p><h2 id="step-website">What should guests find?</h2><p>Give us the pages and content you want inside your Toast site.</p></div>
+          <div class="fields">
+            <label>Pages you want <span class="hint">Up to three content pages, such as Home, About and Contact.</span><input name="pages" maxlength="240" placeholder="Home, About, Contact"></label>
+            <label>Main thing guests should do <em>*</em><select name="primaryAction" required><option value="">Choose one</option><option value="order-online">Order online</option><option value="view-menu">View the menu</option><option value="reserve">Make a reservation</option><option value="call">Call the restaurant</option><option value="visit">Visit the restaurant</option><option value="other">Something else (describe below)</option></select></label>
+            <label>Words for those pages <span class="hint">Paste your approved copy here, or attach a document in the next step.</span><textarea name="pageCopy" rows="7" maxlength="12000" placeholder="What should guests know about your restaurant?"></textarea></label>
+            <label>Active Toast guest links <span class="hint">Menu, ordering, reservations, catering or gift cards, if already enabled.</span><textarea name="toastLinks" rows="3" maxlength="2000" placeholder="Paste the links you already use."></textarea></label>
+            <label>Anything else we should know? <textarea name="notes" rows="4" maxlength="4000" placeholder="Style preferences, calls to action, or details we should preserve."></textarea></label>
+          </div>
+        </section>
+
+        <section class="step-panel" data-step="2" aria-labelledby="step-assets" hidden>
+          <div class="form-heading"><p class="mono lime">03 / Assets</p><h2 id="step-assets">Add your files.</h2><p>Choose the logo, photos and copy you'd like us to use. Add at least one file or a shared folder link.</p></div>
+          <div class="fields">
+            <label class="upload" for="assets"><strong>Choose logo, photo and copy files</strong><span>PNG, JPG, WebP, PDF or DOCX. Up to 12 files, 8 MB each, 30 MB total.</span><input id="assets" name="assets" type="file" multiple accept=".png,.jpg,.jpeg,.webp,.pdf,.docx,image/png,image/jpeg,image/webp,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
+            <p id="file-list" class="hint" aria-live="polite">No files selected.</p>
+            <label>Shared folder link <span class="hint">For larger photo sets, include a link your CoGrow contact can open.</span><input type="url" name="assetFolderUrl" placeholder="https://" maxlength="500"></label>
+          </div>
+        </section>
+
+        <section class="step-panel" data-step="3" aria-labelledby="step-review" hidden>
+          <div class="form-heading"><p class="mono lime">04 / Review</p><h2 id="step-review">Check your answers.</h2><p>You can go back to change anything before sending.</p></div>
+          <dl class="review-list">
+            <div><dt>Restaurant</dt><dd id="review-restaurant"></dd></div>
+            <div><dt>Contact</dt><dd id="review-contact"></dd></div>
+            <div><dt>Current site</dt><dd id="review-current"></dd></div>
+            <div><dt>Address</dt><dd id="review-address"></dd></div>
+            <div><dt>Pages</dt><dd id="review-pages"></dd></div>
+            <div><dt>Guest action</dt><dd id="review-action"></dd></div>
+            <div><dt>Page copy</dt><dd id="review-copy" class="long"></dd></div>
+            <div><dt>Toast links</dt><dd id="review-links" class="long"></dd></div>
+            <div><dt>Files</dt><dd id="review-files"></dd></div>
+            <div><dt>Shared folder</dt><dd id="review-folder"></dd></div>
+            <div><dt>Other notes</dt><dd id="review-notes" class="long"></dd></div>
+          </dl>
+          <div class="fields">
+            <label class="check"><input type="checkbox" name="assetPermission" value="yes" required><span>I have permission to share these materials with CoGrow for this restaurant website project.</span></label>
+            <div class="trap" aria-hidden="true"><label>Leave this blank <input name="fax" tabindex="-1" autocomplete="off"></label></div>
+            <div id="turnstile" aria-label="Bot verification"></div>
+            <p id="form-status" class="form-status" role="status" aria-live="polite">Checking intake availability…</p>
+            <p class="fine">Toast editor access is arranged separately. Please do not send passwords, payment information or customer data.</p>
+            <p class="fine">We'll use your submission for this website build and store uploaded files privately. See our <a href="/privacy">privacy policy</a>. We'll confirm access and timing before we start. Toast subscription and any additional services are separate.</p>
+          </div>
+        </section>
+
+        <div class="step-actions"><button id="back-step" class="btn ghost" type="button" hidden>← Back</button><button id="next-step" class="btn" type="button">Continue →</button><button class="btn submit" type="submit" hidden disabled>Send onboarding materials <span aria-hidden="true">→</span></button></div>
+      </form>
+    </div>
+  </main>
+  <footer><div class="wrap"><a class="brand" href="/" style="font-size:18px"><i><b></b><b></b><b></b></i>CoGrow</a><a class="mono" href="mailto:paul@cogrow.ai">Need help? Email CoGrow</a><span class="mono dim">© 2026 CoGrow AI LLC</span></div></footer>
+</body>
+</html>
