@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toast Website Intake — CoGrow</title>
+<meta name="description" content="Tell us about your restaurant so we can build your Toast website.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .intake{padding:clamp(40px,6vw,72px) 0 clamp(56px,8vw,96px)}
+  .intake form{max-width:760px}
+  fieldset{border:0;border-top:1px solid var(--line);padding:32px 0 8px;margin:0}
+  legend{font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,2.6vw,30px);padding:0;margin-bottom:6px;float:left;width:100%}
+  legend + *{clear:both}
+  fieldset:first-of-type{border-top:0;padding-top:0}
+  .help{color:var(--dim);font-size:15.5px;margin:0 0 20px;max-width:58ch}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+  @media (max-width:640px){.pair{grid-template-columns:1fr}}
+  .f{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+  .f > span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+  .f > span em{font-style:normal;color:var(--lime)}
+  input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+    width:100%;font:inherit;font-size:16px;color:var(--paper);background:var(--ground-2);
+    border:1px solid var(--line);border-radius:2px;padding:12px 14px}
+  textarea{min-height:96px;resize:vertical}
+  input:focus,textarea:focus,select:focus{outline:2px solid var(--lime);outline-offset:-1px;border-color:transparent}
+  .checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px 18px;margin-bottom:18px}
+  .checks label,.radios label{display:flex;gap:10px;align-items:center;font-size:16px;cursor:pointer}
+  .radios{display:flex;flex-wrap:wrap;gap:10px 22px;margin-bottom:18px}
+  input[type=checkbox],input[type=radio]{accent-color:var(--lime);width:18px;height:18px}
+  .loc{border:1px solid var(--line);background:rgba(12,46,34,.5);padding:20px 20px 4px;margin-bottom:16px;border-radius:2px}
+  .loc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .loc-head .mono{color:var(--lime)}
+  .rm{background:none;border:0;color:var(--dim);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+  .rm:hover{color:var(--paper)}
+  .add{margin-bottom:24px;cursor:pointer}
+  .submit{margin-top:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  .submit button{border:0;cursor:pointer;font-size:14px;padding:15px 22px}
+  .err{color:#ffb4a8;font-size:15px}
+  .done{display:none;max-width:640px}
+  .done h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em;font-size:clamp(32px,4vw,48px);line-height:1;margin-bottom:18px}
+  .done p{font-size:18px;margin-bottom:22px;max-width:52ch}
+  .hp{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+
+<header class="head">
+  <div class="wrap" style="position:relative">
+    <a class="brand" href="index.html"><i><b></b><b></b><b></b></i>CoGrow</a>
+  </div>
+</header>
+<main>
+
+<section class="phero">
+  <div class="wrap">
+    <p class="mono dim kick">Toast Websites · Intake</p>
+    <h1>Let's build your <span class="lime">Toast</span> website.</h1>
+    <div class="lede">
+      <p>This takes about five minutes. We use your answers to pull your menu, photos and branding before we talk, so the kickoff call is short. Your menu and prices already live in Toast, so you don't need to send those.</p>
+    </div>
+  </div>
+</section>
+
+<section class="intake">
+  <div class="wrap">
+    <form id="intake" novalidate>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off">
+
+      <fieldset>
+        <legend>About you</legend>
+        <p class="help">Whoever we should work with day to day.</p>
+        <label class="f"><span>Restaurant group or company name <em>*</em></span><input type="text" name="Group name" required></label>
+        <div class="pair">
+          <label class="f"><span>Your name <em>*</em></span><input type="text" name="Contact name" required></label>
+          <label class="f"><span>Your role</span><input type="text" name="Role" placeholder="Owner, GM, marketing..."></label>
+        </div>
+        <div class="pair">
+          <label class="f"><span>Email <em>*</em></span><input type="email" name="email" required></label>
+          <label class="f"><span>Phone <em>*</em></span><input type="tel" name="Phone" required></label>
+        </div>
+        <label class="f"><span>Your Toast account rep</span><input type="text" name="Toast rep"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your locations</legend>
+        <p class="help">Add one entry per location. If two locations are the same restaurant (same name, same menu), give them the same concept name and they'll share one website with a location picker.</p>
+        <div id="locs"></div>
+        <button type="button" class="btn ghost add" id="addLoc">+ Add another location</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your domain</legend>
+        <p class="help">Your domain is your web address, like yourrestaurant.com. To switch it over to Toast we'll need someone who can log in where it's registered.</p>
+        <span class="f"><span>Do you already own a domain? <em>*</em></span></span>
+        <div class="radios">
+          <label><input type="radio" name="Owns domain" value="Yes" required> Yes</label>
+          <label><input type="radio" name="Owns domain" value="No"> No, we need one</label>
+          <label><input type="radio" name="Owns domain" value="Not sure"> Not sure</label>
+        </div>
+        <div class="pair">
+          <label class="f"><span>Where is it registered?</span><input type="text" name="Domain registrar" placeholder="GoDaddy, Squarespace, Wix..."></label>
+          <label class="f"><span>Who has the login?</span><input type="text" name="Domain login holder" placeholder="Name, or 'our old web person'"></label>
+        </div>
+        <label class="f"><span>Are you paying for a website service you'd like to cancel?</span><input type="text" name="Current website service" placeholder="SpotHopper, BentoBox, Wix, a designer..."></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>What goes on the site</legend>
+        <p class="help">Home, menu and online ordering are included. Check anything else you want.</p>
+        <div class="checks">
+          <label><input type="checkbox" name="Pages" value="Catering"> Catering</label>
+          <label><input type="checkbox" name="Pages" value="Private events"> Private events</label>
+          <label><input type="checkbox" name="Pages" value="Reservations"> Reservations</label>
+          <label><input type="checkbox" name="Pages" value="Gift cards"> Gift cards</label>
+          <label><input type="checkbox" name="Pages" value="Loyalty"> Loyalty program</label>
+          <label><input type="checkbox" name="Pages" value="Events"> Events / specials</label>
+          <label><input type="checkbox" name="Pages" value="Careers"> Careers / hiring</label>
+          <label><input type="checkbox" name="Pages" value="Contact form"> Contact form</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Logo, photos and your story</legend>
+        <p class="help">We'll pull what we can from your current site and social pages. Original files look much sharper than what we can grab online, so a shared folder helps.</p>
+        <label class="f"><span>Link to a folder with your logo and photos</span><input type="url" name="Assets folder" placeholder="Google Drive, Dropbox, iCloud link"></label>
+        <label class="f"><span>In a few sentences, what should guests know about you?</span><textarea name="Story" placeholder="How you started, who's in the kitchen, what you're known for. Your own words are fine, we'll tidy it up."></textarea></label>
+        <label class="f"><span>Anything else we should know?</span><textarea name="Notes"></textarea></label>
+      </fieldset>
+
+      <div class="submit">
+        <button type="submit" class="btn" id="go">Send it over →</button>
+        <span class="err" id="err" role="alert"></span>
+      </div>
+    </form>
+
+    <div class="done" id="done">
+      <p class="mono lime" style="margin-bottom:18px">Got it</p>
+      <h2>Thanks. We're on it.</h2>
+      <p>We'll start pulling your photos and branding now and email you within one business day to set up a short kickoff call. Please plan to have the owner or GM on it, since they'll need to give us access in Toast.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html" style="font-size:18px"><i><b></b><b></b><b></b></i>CoGrow</a>
+    <ul class="mono" style="font-size:12px">
+      <li><a href="mailto:paul@cogrow.ai">paul@cogrow.ai</a></li>
+    </ul>
+    <span class="mono dim" style="font-size:11.5px">© 2026 CoGrow AI LLC</span>
+  </div>
+</footer>
+
+<template id="locTpl">
+  <div class="loc">
+    <div class="loc-head"><span class="mono">Location <b class="n"></b></span><button type="button" class="rm">Remove</button></div>
+    <div class="pair">
+      <label class="f"><span>Concept / restaurant name <em>*</em></span><input type="text" data-k="Concept" required placeholder="e.g. Too Thai Street Eats"></label>
+      <label class="f"><span>Location nickname</span><input type="text" data-k="Nickname" placeholder="e.g. Carrollton"></label>
+    </div>
+    <label class="f"><span>Street address <em>*</em></span><input type="text" data-k="Address" required></label>
+    <div class="pair">
+      <label class="f"><span>Current website</span><input type="text" data-k="Website"></label>
+      <label class="f"><span>Instagram / Facebook / TikTok</span><input type="text" data-k="Social"></label>
+    </div>
+    <label class="f"><span>Hours, if different from what's in Toast</span><input type="text" data-k="Hours" placeholder="Leave blank to use your Toast hours"></label>
+  </div>
+</template>
+
+<script>
+// Submissions go to FormSubmit, same as the old contact form. First submit triggers a one-time activation email to paul@cogrow.ai.
+const ENDPOINT = "https://formsubmit.co/ajax/paul@cogrow.ai";
+
+const locs = document.getElementById("locs");
+const tpl = document.getElementById("locTpl");
+function renumber(){
+  [...locs.children].forEach((el,i)=>{
+    el.querySelector(".n").textContent = i+1;
+    el.querySelector(".rm").style.visibility = locs.children.length>1 ? "visible" : "hidden";
+  });
+}
+function addLoc(){
+  const el = tpl.content.firstElementChild.cloneNode(true);
+  el.querySelector(".rm").onclick = ()=>{ el.remove(); renumber(); };
+  locs.appendChild(el); renumber();
+}
+document.getElementById("addLoc").onclick = ()=>{ addLoc(); locs.lastElementChild.querySelector("input").focus(); };
+addLoc();
+
+const form = document.getElementById("intake");
+const err = document.getElementById("err");
+form.addEventListener("submit", async e=>{
+  e.preventDefault(); err.textContent = "";
+  const bad = [...form.querySelectorAll("[required]")].find(i=>{
+    if(i.type==="radio") return !form.querySelector(`input[name="${i.name}"]:checked`);
+    return !i.value.trim() || (i.type==="email" && !/^\S+@\S+\.\S+$/.test(i.value));
+  });
+  if(bad){ err.textContent = "Please fill in the required fields."; bad.focus(); return; }
+  if(form._honey.value) return;
+
+  const fd = new FormData(form), data = {};
+  for(const [k,v] of fd){ if(k==="_honey") continue; data[k] = data[k] ? data[k]+", "+v : v; }
+  data["Locations"] = [...locs.children].map((el,i)=>{
+    const parts = [...el.querySelectorAll("[data-k]")].filter(x=>x.value.trim()).map(x=>`${x.dataset.k}: ${x.value.trim()}`);
+    return `#${i+1} — ${parts.join(" | ")}`;
+  }).join("\n");
+  data["Location count"] = locs.children.length;
+  data._subject = `Toast website intake: ${data["Group name"]} (${locs.children.length} locations)`;
+  data._template = "table";
+
+  const btn = document.getElementById("go"); btn.disabled = true; btn.textContent = "Sending...";
+  try{
+    const r = await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)});
+    const j = await r.json().catch(()=>({}));
+    if(!r.ok || String(j.success)==="false") throw new Error(j.message||"send failed");
+    form.style.display = "none"; document.getElementById("done").style.display = "block";
+    window.scrollTo({top:document.querySelector(".intake").offsetTop-80,behavior:"smooth"});
+  }catch(_){
+    err.innerHTML = 'That didn\'t go through. Try again, or email <a href="mailto:paul@cogrow.ai">paul@cogrow.ai</a>.';
+    btn.disabled = false; btn.textContent = "Send it over →";
+  }
+});
+</script>
+</body>
+</html>
