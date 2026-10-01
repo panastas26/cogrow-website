@@ -176,18 +176,15 @@
 </template>
 
 <script>
-// Submissions go to FormSubmit as a regular page POST (its AJAX endpoint sits behind a Cloudflare
-// challenge that fetch can't pass). FormSubmit redirects back here with ?sent=1.
-// First submit triggers a one-time activation email to paul@cogrow.ai.
-const ENDPOINT = "https://formsubmit.co/paul@cogrow.ai";
-const BACK = "https://cogrow.ai/restaurant-intake?sent=1";
+// Submissions go to FormSubmit (AJAX). The random string is the activated alias for paul@cogrow.ai,
+// so the address isn't exposed in page source.
+const ENDPOINT = "https://formsubmit.co/ajax/0e7b7a616135a9cab003cd42ebaedbc5";
 
 function showDone(){
   document.getElementById("intake").style.display = "none";
   document.getElementById("done").style.display = "block";
   window.scrollTo({top:document.querySelector(".intake").offsetTop-80});
 }
-if(new URLSearchParams(location.search).get("sent")==="1") showDone();
 
 const locs = document.getElementById("locs");
 const tpl = document.getElementById("locTpl");
@@ -207,7 +204,7 @@ addLoc();
 
 const form = document.getElementById("intake");
 const err = document.getElementById("err");
-form.addEventListener("submit", e=>{
+form.addEventListener("submit", async e=>{
   e.preventDefault(); err.textContent = "";
   const bad = [...form.querySelectorAll("[required]")].find(i=>{
     if(i.type==="radio") return !form.querySelector(`input[name="${i.name}"]:checked`);
@@ -225,23 +222,17 @@ form.addEventListener("submit", e=>{
   data["Location count"] = locs.children.length;
   data._subject = `Website intake: ${data["Group name"]} (${locs.children.length} locations)`;
   data._template = "table";
-  data._next = BACK;
-  data._captcha = "false";
 
   const btn = document.getElementById("go"); btn.disabled = true; btn.textContent = "Sending...";
-  const out = document.createElement("form");
-  out.method = "POST"; out.action = ENDPOINT; out.style.display = "none";
-  for(const [k,v] of Object.entries(data)){
-    const i = document.createElement("textarea");
-    i.name = k; i.value = v; out.appendChild(i);
-  }
-  document.body.appendChild(out);
-  out.submit();
-  // If the page never navigates (offline etc.), let them retry.
-  setTimeout(()=>{
+  try{
+    const r = await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)});
+    const j = await r.json().catch(()=>({}));
+    if(!r.ok || String(j.success)==="false") throw new Error(j.message||"send failed");
+    showDone();
+  }catch(_){
+    err.innerHTML = 'That didn\'t go through. Try again, or email <a href="mailto:paul@cogrow.ai">paul@cogrow.ai</a>.';
     btn.disabled = false; btn.textContent = "Send it over →";
-    err.innerHTML = 'Still here? Try again, or email <a href="mailto:paul@cogrow.ai">paul@cogrow.ai</a>.';
-  }, 10000);
+  }
 });
 </script>
 </body>
