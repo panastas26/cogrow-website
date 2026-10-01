@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toast Website Handoff — CoGrow</title>
+<meta name="description" content="Everything a Toast rep needs to hand a Toast Websites customer to CoGrow.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .phero h1{max-width:17ch}
+  .jump{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px}
+  .jump a{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:3px}
+  .jump a:hover{color:var(--paper);border-color:var(--paper)}
+  .sec{border-bottom:1px solid var(--line);padding:clamp(44px,6vw,80px) 0;scroll-margin-top:64px}
+  .sec .num{display:block;margin-bottom:12px}
+  .sec h2{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.95;font-size:clamp(32px,4.4vw,56px);margin-bottom:18px;max-width:20ch}
+  .sec .lead{font-size:clamp(17px,1.5vw,19.5px);max-width:60ch;margin-bottom:28px}
+  .sec .lead.dim{color:var(--dim)}
+  .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
+  @media (max-width:860px){.steps3{grid-template-columns:1fr}}
+  .steps3 li{list-style:none;border:1px solid var(--line);background:var(--ground-2);padding:22px;counter-increment:s}
+  .steps3 li::before{content:"0" counter(s);display:block;font-family:var(--mono);font-size:12.5px;color:var(--lime);margin-bottom:12px;letter-spacing:.08em}
+  .steps3 b{display:block;font-family:var(--display);font-size:21px;letter-spacing:-.01em;margin-bottom:8px}
+  .steps3 p{color:var(--dim);font-size:15.5px}
+  .check{list-style:none;display:grid;gap:12px;max-width:760px}
+  .check li{display:flex;gap:14px;align-items:flex-start;font-size:17px}
+  .check li::before{content:"";flex:0 0 18px;height:18px;border:1.5px solid var(--lime);border-radius:2px;margin-top:4px}
+  .note{color:var(--dim);font-size:15.5px;margin-top:20px;max-width:60ch}
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:760px){.links{grid-template-columns:1fr}}
+  .lk{border:1px solid var(--line);padding:22px;background:var(--ground-2);display:flex;flex-direction:column;gap:10px}
+  .lk .mono{color:var(--lime)}
+  .lk a.url{font-size:18px;word-break:break-all}
+  .lk p{color:var(--dim);font-size:15.5px}
+  .lk .row2{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .mini{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--paper);border:1px solid var(--line);padding:8px 12px;cursor:pointer;border-radius:2px;text-decoration:none}
+  .mini:hover{border-color:var(--paper)}
+  .grid{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:clamp(20px,3vw,40px);align-items:start}
+  @media (max-width:860px){.grid{grid-template-columns:1fr}}
+  .f{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+  .f span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+  .f input,.f textarea{width:100%;font:inherit;font-size:16px;color:var(--paper);background:var(--ground-2);border:1px solid var(--line);border-radius:2px;padding:11px 13px}
+  .f textarea{min-height:70px;resize:vertical}
+  .f input:focus,.f textarea:focus{outline:2px solid var(--lime);outline-offset:-1px}
+  .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+  .bar button{border:0;cursor:pointer}
+  .ok{font-family:var(--mono);font-size:12.5px;color:var(--lime);letter-spacing:.06em}
+  .subj{background:#fff;color:#202124;border-radius:4px 4px 0 0;padding:12px 18px;border-bottom:1px solid #e0e0e0;font:14px Arial,Helvetica,sans-serif}
+  .subj b{color:#5f6368;font-weight:400;margin-right:6px}
+  .mail{background:#fff;color:#222;border-radius:0 0 4px 4px;padding:18px;font:14px/1.45 Arial,Helvetica,sans-serif}
+  .mail a{color:#1155cc}
+  .mail ol{padding-left:28px}
+  .blank{background:#fff3b0}
+  .flow{list-style:none;display:grid;gap:0;max-width:820px;counter-reset:f}
+  .flow li{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--line);counter-increment:f}
+  .flow li:last-child{border-bottom:1px solid var(--line)}
+  @media (max-width:600px){.flow li{grid-template-columns:1fr;gap:6px}}
+  .flow .when{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);padding-top:3px}
+  .flow b{display:block;font-size:18px;margin-bottom:4px}
+  .flow p{color:var(--dim);font-size:15.5px}
+  .faq{max-width:820px}
+  .faq details{border-top:1px solid var(--line);padding:18px 0}
+  .faq details:last-child{border-bottom:1px solid var(--line)}
+  .faq summary{cursor:pointer;font-size:18px;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:20px}
+  .faq summary::after{content:"+";font-family:var(--mono);color:var(--lime)}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{color:var(--dim);margin-top:10px;max-width:64ch}
+  .price{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+  .price div{border:1px solid var(--line);padding:18px 22px;min-width:220px}
+  .price strong{display:block;font-family:var(--display);font-size:34px;letter-spacing:-.03em;line-height:1}
+  .price span{color:var(--dim);font-size:15px}
+  .contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+  @media print{.head,.jump,.bar,.mini,#emailTool .grid > form{display:none!important}body,html{background:#fff;color:#000}.sec{border-color:#ccc}}
+</style>
+</head>
+<body>
+
+<header class="head"><div class="wrap"><a class="brand" href="index.html"><i><b></b><b></b><b></b></i>CoGrow</a></div></header>
+<main>
+
+<section class="phero">
+  <div class="wrap">
+    <p class="mono dim kick">For Toast reps · Toast Websites handoff</p>
+    <h1>Hand off the website. <span class="lime">We'll build it.</span></h1>
+    <div class="lede">
+      <p>CoGrow builds Toast Websites for your restaurants, inside their own Toast account. Your part is one intro email. Everything you need is on this page.</p>
+    </div>
+    <nav class="jump">
+      <a href="#steps">Your steps</a><a href="#fit">Who's a fit</a><a href="#links">Links</a><a href="#email">Intro email</a><a href="#after">What happens next</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</section>
+
+<section class="sec" id="what">
+  <div class="wrap">
+    <span class="num mono dim">00 · What we do</span>
+    <h2>A finished Toast website, without the restaurant doing the setup.</h2>
+    <p class="lead">We pull their photos, branding and copy from their current site and socials, set up the pages, connect their domain and publish. The menu and prices already sync from the POS, so nobody re-enters them. The restaurant owns the site and can edit it any time.</p>
+    <div class="price">
+      <div><strong>$279</strong><span>per location, one time</span></div>
+      <div><strong>Optional</strong><span>monthly plan for ongoing updates</span></div>
+    </div>
+    <p class="note">CoGrow invoices the restaurant directly. Nothing goes on their Toast bill.</p>
+  </div>
+</section>
+
+<section class="sec" id="steps">
+  <div class="wrap">
+    <span class="num mono dim">01 · Your steps</span>
+    <h2>Three things, then you're done.</h2>
+    <ol class="steps3">
+      <li><b>Check the account</b><p>Confirm Digital Storefront Pro Suite is on the account, or note the date it will be.</p></li>
+      <li><b>Send the intro</b><p>Use the <a href="#email">email builder below</a>. Put paul@cogrow.ai on CC.</p></li>
+      <li><b>Send Paul a heads-up</b><p>Locations and concepts, what they bought, any launch date, and anything we should know (a picky owner, a domain held by an old web designer, a grand opening).</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="fit">
+  <div class="wrap">
+    <span class="num mono dim">02 · Who's a fit</span>
+    <h2>Ready when these are true.</h2>
+    <ul class="check">
+      <li>Digital Storefront Pro Suite is on the account, so Websites shows up in Toast Web.</li>
+      <li>The menu is built in Toast and live on the POS.</li>
+      <li>The owner or GM can join a 30-minute kickoff call. They need full Toast Web admin access to add us as a user.</li>
+      <li>Someone can log in where their domain is registered (GoDaddy, Squarespace, Wix), or they're fine buying a new one through Toast.</li>
+    </ul>
+    <p class="note">Missing one? Refer them anyway and tell Paul which one. We'll sort it out on the kickoff call.</p>
+  </div>
+</section>
+
+<section class="sec" id="links">
+  <div class="wrap">
+    <span class="num mono dim">03 · The two links</span>
+    <h2>Intake form first, then the call.</h2>
+    <p class="lead dim">Both are already in the intro email. They're here if a restaurant asks for them again.</p>
+    <div class="links">
+      <div class="lk">
+        <span class="mono">Intake form · 5 minutes</span>
+        <a class="url" href="https://cogrow.ai/toast-onboarding" target="_blank">cogrow.ai/toast-onboarding</a>
+        <p>Locations, domain, pages they want, photos. It tells us where to look online so their branding is pulled before the call.</p>
+        <div class="row2"><button class="mini" data-copy="https://cogrow.ai/toast-onboarding">Copy link</button></div>
+      </div>
+      <div class="lk">
+        <span class="mono">Kickoff call · 30 minutes</span>
+        <a class="url" href="https://cal.com/cogrowai/toast-website-onboarding" target="_blank">cal.com/cogrowai/toast-website-onboarding</a>
+        <p>A video call with Paul. The owner or GM adds us in Toast Web and we start the domain connection.</p>
+        <div class="row2"><button class="mini" data-copy="https://cal.com/cogrowai/toast-website-onboarding">Copy link</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="email">
+  <div class="wrap" id="emailTool">
+    <span class="num mono dim">04 · Intro email</span>
+    <h2>Fill it in, copy, paste into Gmail.</h2>
+    <p class="lead dim">Copy email keeps the formatting and links when you paste. Copy the subject separately and keep paul@cogrow.ai on CC.</p>
+    <div class="grid">
+      <form id="f" onsubmit="return false">
+        <label class="f"><span>Contact's first name</span><input id="first" placeholder="first name"></label>
+        <label class="f"><span>Restaurant / group name</span><input id="rest" placeholder="restaurant name"></label>
+        <label class="f"><span>Number of locations</span><input id="num" placeholder="#" inputmode="numeric"></label>
+        <label class="f"><span>Locations</span><input id="list" placeholder="Addison, Carrollton, Frisco"></label>
+        <label class="f"><span>One line of context for Paul (optional)</span><textarea id="ctx" placeholder="They want it live before their Frisco opening."></textarea></label>
+        <label class="f"><span>Your name</span><input id="me" placeholder="your name"></label>
+      </form>
+      <div>
+        <div class="bar">
+          <button class="btn" id="copyBody" type="button">Copy email</button>
+          <button class="btn ghost" id="copySubj" type="button">Copy subject</button>
+          <button class="btn ghost" data-copy="paul@cogrow.ai" type="button">Copy CC</button>
+          <span class="ok" id="ok" aria-live="polite"></span>
+        </div>
+        <div class="subj"><b>Subject</b><span id="subjText">Getting your Toast website built: intro to Paul at CoGrow</span></div>
+        <div class="mail" id="mail"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="after">
+  <div class="wrap">
+    <span class="num mono dim">05 · What happens next</span>
+    <h2>Live in about two weeks.</h2>
+    <p class="lead dim">That's our target from the kickoff call. The usual hold-up is getting into the restaurant's domain account. We'll copy you on the go-live email.</p>
+    <ol class="flow">
+      <li><span class="when">Intake</span><div><b>They fill out the form</b><p>We pull their menu view, photos, logo, reviews and any existing copy.</p></div></li>
+      <li><span class="when">Kickoff</span><div><b>30-minute call</b><p>We confirm locations and branding. The owner adds us in Toast Web with Websites Setup (6.9) and Publishing (6.4), and we start the domain connection.</p></div></li>
+      <li><span class="when">Build</span><div><b>We set up the site</b><p>Layout, branding, pages, photos and online ordering, all inside their Toast account.</p></div></li>
+      <li><span class="when">Review</span><div><b>Short screen-share</b><p>They see the site and get one round of edits.</p></div></li>
+      <li><span class="when">Publish</span><div><b>We go live</b><p>The domain gets connected. DNS can take up to 48 hours to settle.</p></div></li>
+      <li><span class="when">Handoff</span><div><b>They take the keys</b><p>A one-page guide to editing hours and photos. We remove our access, or keep it if they sign up for monthly updates.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <span class="num mono dim">06 · Questions restaurants ask</span>
+    <h2>Answers you can give on the spot.</h2>
+    <div class="faq">
+      <details><summary>Do we have to re-enter our menu?</summary><p>No. It syncs from the Toast POS, and price changes show up on the site automatically.</p></details>
+      <details><summary>Who owns the website?</summary><p>The restaurant. It's in their Toast account and they can edit it any time.</p></details>
+      <details><summary>We have several restaurants. One site or several?</summary><p>Each concept gets its own site. Locations of the same concept share one site with a location picker. Pricing is per location.</p></details>
+      <details><summary>We already pay for a website (SpotHopper, BentoBox, Wix).</summary><p>We move them to Toast Websites, and they can cancel the old service once the new site is live.</p></details>
+      <details><summary>Do we lose our web address?</summary><p>No. We connect their existing domain. Old pages can be forwarded so Google links still work.</p></details>
+      <details><summary>What do we need to send?</summary><p>Just the intake form. A logo file and a few good photos help, but we pull what we can from their current site and socials.</p></details>
+      <details><summary>How do we pay?</summary><p>CoGrow invoices the restaurant directly. Nothing goes through their Toast bill.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact" style="border-bottom:0">
+  <div class="wrap">
+    <span class="num mono dim">07 · Contact</span>
+    <h2>Questions about an account?</h2>
+    <p class="lead">Reach Paul before you send the intro if a restaurant doesn't fit the checklist.</p>
+    <div class="contact">
+      <a class="btn" href="mailto:paul@cogrow.ai">paul@cogrow.ai</a>
+      <a class="btn ghost" href="tel:+19785026692">978-502-6692</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html" style="font-size:18px"><i><b></b><b></b><b></b></i>CoGrow</a>
+    <span class="mono dim" style="font-size:11.5px">© 2026 CoGrow AI LLC</span>
+  </div>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const v = (id, ph, hl) => {
+  const t = $(id).value.trim();
+  return t ? esc(t) : (hl ? `<span class="blank">[${ph}]</span>` : `[${ph}]`);
+};
+const FORM = "https://cogrow.ai/toast-onboarding";
+const CAL = "https://cal.com/cogrowai/toast-website-onboarding";
+
+// Gmail-native markup: one <div> per line, <div><br></div> for blank lines.
+function build(hl){
+  const br = "<div><br></div>";
+  const ctx = $("ctx").value.trim() ? " " + esc($("ctx").value.trim()) : "";
+  const loc = $("num").value.trim() === "1" ? "location" : "locations";
+  return [
+    `<div>Hi ${v("first","first name",hl)},</div>`, br,
+    `<div>I'd like to introduce you to Paul Anastas at CoGrow (cc'd). Paul's team builds Toast Websites for restaurants, so you get a finished site without having to set it up yourself. It lives in your Toast account, and your menu and prices update automatically from the POS.</div>`, br,
+    `<div>There are two quick steps to get started:</div>`,
+    `<ol><li>Fill out the <a href="${FORM}">intake form</a> (about 5 minutes)</li><li>Book a <a href="${CAL}">30-minute kickoff call</a></li></ol>`, br,
+    `<div>Please have the owner or GM on the call. They'll need to add Paul as a user in Toast Web so his team can build and publish the site. If you have a website address already, have the login for wherever it's registered (GoDaddy, Wix, etc.) handy too.</div>`, br,
+    `<div>Paul, ${v("rest","restaurant name",hl)} has ${v("num","#",hl)} ${loc}: ${v("list","list",hl)}.${ctx}</div>`, br,
+    `<div>I'll let you two take it from here.</div>`, br,
+    `<div>${v("me","your name",hl)}</div>`
+  ].join("");
+}
+function plain(){
+  const d = document.createElement("div"); d.innerHTML = build(false);
+  d.querySelectorAll("li").forEach((li,i)=> li.textContent = `${i+1}. ${li.textContent}`);
+  d.querySelectorAll("a").forEach(a => a.textContent = `${a.textContent} (${a.href})`);
+  return [...d.querySelectorAll("div, li")].map(e => e.textContent).join("\n");
+}
+function render(){ $("mail").innerHTML = build(true); }
+document.querySelectorAll("#f input, #f textarea").forEach(i => i.addEventListener("input", render));
+render();
+
+let t;
+function flash(msg){ $("ok").textContent = msg; clearTimeout(t); t = setTimeout(()=> $("ok").textContent = "", 2500); }
+async function copyRich(html, text){
+  try{
+    await navigator.clipboard.write([new ClipboardItem({
+      "text/html": new Blob([html], {type:"text/html"}),
+      "text/plain": new Blob([text], {type:"text/plain"})
+    })]);
+    return true;
+  }catch(_){
+    const r = document.createRange(); r.selectNodeContents($("mail"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    const ok = document.execCommand("copy"); s.removeAllRanges(); return ok;
+  }
+}
+$("copyBody").onclick = async () => {
+  const html = `<div style="font-family:Arial,Helvetica,sans-serif">${build(false)}</div>`;
+  flash(await copyRich(html, plain()) ? "Copied. Paste into Gmail." : "Couldn't copy. Select the email and copy it manually.");
+};
+async function copyText(txt, el){
+  try{ await navigator.clipboard.writeText(txt); }catch(_){ return; }
+  if(el.closest("#emailTool")) return flash("Copied.");
+  const old = el.textContent; el.textContent = "Copied"; setTimeout(()=> el.textContent = old, 1800);
+}
+$("copySubj").onclick = e => copyText($("subjText").textContent, e.currentTarget);
+document.querySelectorAll("[data-copy]").forEach(b => b.onclick = e => copyText(b.dataset.copy, e.currentTarget));
+</script>
+</body>
+</html>
