@@ -116,7 +116,7 @@
     <ol class="steps3">
       <li><b>Check the account</b><p>Confirm the website add-on is active on the account, or note the date it will be.</p></li>
       <li><b>Send the intro</b><p>Use the <a href="#email">email builder below</a>. Put paul@cogrow.ai on CC.</p></li>
-      <li><b>Send Paul a heads-up</b><p>Locations and concepts, what they bought, any launch date, and anything we should know (a picky owner, a domain held by an old web designer, a grand opening).</p></li>
+      <li><b>Send us a heads-up</b><p>Locations and concepts, what they bought, any launch date, and anything we should know (a picky owner, a domain held by an old web designer, a grand opening).</p></li>
     </ol>
   </div>
 </section>
@@ -131,7 +131,7 @@
       <li>The owner or GM can join a 30-minute kickoff call. They need full back-office admin access to add us as a user.</li>
       <li>Someone can log in where their domain is registered (GoDaddy, Squarespace, Wix), or they're fine buying a new one through the POS.</li>
     </ul>
-    <p class="note">Missing one? Refer them anyway and tell Paul which one. We'll sort it out on the kickoff call.</p>
+    <p class="note">Missing one? Refer them anyway and tell us which one. We'll sort it out on the kickoff call.</p>
   </div>
 </section>
 
@@ -150,7 +150,7 @@
       <div class="lk">
         <span class="mono">Kickoff call · 30 minutes</span>
         <a class="url" href="https://cal.com/cogrowai/website-onboarding" target="_blank">cal.com/cogrowai/website-onboarding</a>
-        <p>A video call with Paul. The owner or GM adds us in the back office and we start the domain connection.</p>
+        <p>A video call with a member of our team. The owner or GM adds us in the back office and we start the domain connection.</p>
         <div class="row2"><button class="mini" data-copy="https://cal.com/cogrowai/website-onboarding">Copy link</button></div>
       </div>
     </div>
@@ -168,7 +168,7 @@
         <label class="f"><span>Restaurant / group name</span><input id="rest" placeholder="restaurant name"></label>
         <label class="f"><span>Number of locations</span><input id="num" placeholder="#" inputmode="numeric"></label>
         <label class="f"><span>Locations</span><input id="list" placeholder="Addison, Carrollton, Frisco"></label>
-        <label class="f"><span>One line of context for Paul (optional)</span><textarea id="ctx" placeholder="They want it live before their Frisco opening."></textarea></label>
+        <label class="f"><span>One line of context for our team (optional)</span><textarea id="ctx" placeholder="They want it live before their Frisco opening."></textarea></label>
         <label class="f"><span>Your name</span><input id="me" placeholder="your name"></label>
       </form>
       <div>
@@ -178,7 +178,7 @@
           <button class="btn ghost" data-copy="paul@cogrow.ai" type="button">Copy CC</button>
           <span class="ok" id="ok" aria-live="polite"></span>
         </div>
-        <div class="subj"><b>Subject</b><span id="subjText">Getting your new website built: intro to Paul at CoGrow</span></div>
+        <div class="subj"><b>Subject</b><span id="subjText">Getting your new website built: intro to CoGrow</span></div>
         <div class="mail" id="mail"></div>
       </div>
     </div>
@@ -221,7 +221,7 @@
   <div class="wrap">
     <span class="num mono dim">07 · Contact</span>
     <h2>Questions about an account?</h2>
-    <p class="lead">Reach Paul before you send the intro if a restaurant doesn't fit the checklist.</p>
+    <p class="lead">Reach our team before you send the intro if a restaurant doesn't fit the checklist.</p>
     <div class="contact">
       <a class="btn" href="mailto:paul@cogrow.ai">paul@cogrow.ai</a>
       <a class="btn ghost" href="tel:+19785026692">978-502-6692</a>
@@ -254,11 +254,11 @@ function build(hl){
   const loc = $("num").value.trim() === "1" ? "location" : "locations";
   return [
     `<div>Hi ${v("first","first name",hl)},</div>`, br,
-    `<div>I'd like to introduce you to Paul Anastas at CoGrow (cc'd). Paul's team builds restaurant websites that run on your POS, so you get a finished site without having to set it up yourself. It lives in your POS account, and your menu and prices update automatically from the POS.</div>`, br,
+    `<div>I'd like to introduce you to the team at CoGrow (cc'd). They build restaurant websites that run on your POS, so you get a finished site without having to set it up yourself. It lives in your POS account, and your menu and prices update automatically from the POS.</div>`, br,
     `<div>There are two quick steps to get started:</div>`,
     `<ol><li>Fill out the <a href="${FORM}">intake form</a> (about 5 minutes)</li><li>Book a <a href="${CAL}">30-minute kickoff call</a></li></ol>`, br,
-    `<div>Please have the owner or GM on the call. They'll need to add Paul as a user in your POS back office so his team can build and publish the site. If you have a website address already, have the login for wherever it's registered (GoDaddy, Wix, etc.) handy too.</div>`, br,
-    `<div>Paul, ${v("rest","restaurant name",hl)} has ${v("num","#",hl)} ${loc}: ${v("list","list",hl)}.${ctx}</div>`, br,
+    `<div>Please have the owner or GM on the call. They'll need to add a member of the CoGrow team as a user in your POS back office so they can build and publish the site. If you have a website address already, have the login for wherever it's registered (GoDaddy, Wix, etc.) handy too.</div>`, br,
+    `<div>CoGrow team, ${v("rest","restaurant name",hl)} has ${v("num","#",hl)} ${loc}: ${v("list","list",hl)}.${ctx}</div>`, br,
     `<div>I'll let you two take it from here.</div>`, br,
     `<div>${v("me","your name",hl)}</div>`
   ].join("");
