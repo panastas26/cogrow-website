@@ -178,7 +178,7 @@
           <button class="btn ghost" data-copy="paul@cogrow.ai" type="button">Copy CC</button>
           <span class="ok" id="ok" aria-live="polite"></span>
         </div>
-        <div class="subj"><b>Subject</b><span id="subjText">Getting your new website built: intro to CoGrow</span></div>
+        <div class="subj"><b>Subject</b><span id="subjText">Getting your new website built: intro to Paul at CoGrow</span></div>
         <div class="mail" id="mail"></div>
       </div>
     </div>
@@ -254,11 +254,11 @@ function build(hl){
   const loc = $("num").value.trim() === "1" ? "location" : "locations";
   return [
     `<div>Hi ${v("first","first name",hl)},</div>`, br,
-    `<div>I'd like to introduce you to the team at CoGrow (cc'd). They build restaurant websites that run on your POS, so you get a finished site without having to set it up yourself. It lives in your POS account, and your menu and prices update automatically from the POS.</div>`, br,
+    `<div>I'd like to introduce you to Paul Anastas at CoGrow (cc'd). Paul's team builds restaurant websites that run on your POS, so you get a finished site without having to set it up yourself. It lives in your POS account, and your menu and prices update automatically from the POS.</div>`, br,
     `<div>There are two quick steps to get started:</div>`,
     `<ol><li>Fill out the <a href="${FORM}">intake form</a> (about 5 minutes)</li><li>Book a <a href="${CAL}">30-minute kickoff call</a></li></ol>`, br,
-    `<div>Please have the owner or GM on the call. They'll need to add a member of the CoGrow team as a user in your POS back office so they can build and publish the site. If you have a website address already, have the login for wherever it's registered (GoDaddy, Wix, etc.) handy too.</div>`, br,
-    `<div>CoGrow team, ${v("rest","restaurant name",hl)} has ${v("num","#",hl)} ${loc}: ${v("list","list",hl)}.${ctx}</div>`, br,
+    `<div>Please have the owner or GM on the call. They'll need to add Paul as a user in your POS back office so his team can build and publish the site. If you have a website address already, have the login for wherever it's registered (GoDaddy, Wix, etc.) handy too.</div>`, br,
+    `<div>Paul, ${v("rest","restaurant name",hl)} has ${v("num","#",hl)} ${loc}: ${v("list","list",hl)}.${ctx}</div>`, br,
     `<div>I'll let you two take it from here.</div>`, br,
     `<div>${v("me","your name",hl)}</div>`
   ].join("");
