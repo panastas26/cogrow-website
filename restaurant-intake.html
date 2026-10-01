@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Toast Website Intake — CoGrow</title>
-<meta name="description" content="Tell us about your restaurant so we can build your Toast website.">
+<title>Restaurant Website Intake — CoGrow</title>
+<meta name="description" content="Tell us about your restaurant so we can build your new website.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,10 +59,10 @@
 
 <section class="phero">
   <div class="wrap">
-    <p class="mono dim kick">Toast Websites · Intake</p>
-    <h1>Let's build your <span class="lime">Toast</span> website.</h1>
+    <p class="mono dim kick">Restaurant websites · Intake</p>
+    <h1>Let's build your <span class="lime">new</span> website.</h1>
     <div class="lede">
-      <p>This takes about five minutes. We use your answers to pull your menu, photos and branding before we talk, so the kickoff call is short. Your menu and prices already live in Toast, so you don't need to send those.</p>
+      <p>This takes about five minutes. We use your answers to pull your menu, photos and branding before we talk, so the kickoff call is short. Your menu and prices already live in your POS, so you don't need to send those.</p>
     </div>
   </div>
 </section>
@@ -84,7 +84,7 @@
           <label class="f"><span>Email <em>*</em></span><input type="email" name="email" required></label>
           <label class="f"><span>Phone <em>*</em></span><input type="tel" name="Phone" required></label>
         </div>
-        <label class="f"><span>Your Toast account rep</span><input type="text" name="Toast rep"></label>
+        <label class="f"><span>Your POS account rep</span><input type="text" name="POS rep"></label>
       </fieldset>
 
       <fieldset>
@@ -96,7 +96,7 @@
 
       <fieldset>
         <legend>Your domain</legend>
-        <p class="help">Your domain is your web address, like yourrestaurant.com. To switch it over to Toast we'll need someone who can log in where it's registered.</p>
+        <p class="help">Your domain is your web address, like yourrestaurant.com. To point it at your new site we'll need someone who can log in where it's registered.</p>
         <span class="f"><span>Do you already own a domain? <em>*</em></span></span>
         <div class="radios">
           <label><input type="radio" name="Owns domain" value="Yes" required> Yes</label>
@@ -142,7 +142,7 @@
     <div class="done" id="done">
       <p class="mono lime" style="margin-bottom:18px">Got it</p>
       <h2>Thanks. We're on it.</h2>
-      <p>We'll start pulling your photos and branding now. If you haven't booked your kickoff call yet, grab a time below. Please plan to have the owner or GM on it, since they'll need to give us access in Toast.</p>
+      <p>We'll start pulling your photos and branding now. If you haven't booked your kickoff call yet, grab a time below. Please plan to have the owner or GM on it, since they'll need to give us access in your POS account.</p>
       <a class="btn" href="https://cal.com/cogrowai/toast-website-onboarding">Book your kickoff call →</a>
     </div>
   </div>
@@ -171,7 +171,7 @@
       <label class="f"><span>Current website</span><input type="text" data-k="Website"></label>
       <label class="f"><span>Instagram / Facebook / TikTok</span><input type="text" data-k="Social"></label>
     </div>
-    <label class="f"><span>Hours, if different from what's in Toast</span><input type="text" data-k="Hours" placeholder="Leave blank to use your Toast hours"></label>
+    <label class="f"><span>Hours, if different from what's in your POS</span><input type="text" data-k="Hours" placeholder="Leave blank to use your POS hours"></label>
   </div>
 </template>
 
@@ -213,7 +213,7 @@ form.addEventListener("submit", async e=>{
     return `#${i+1} — ${parts.join(" | ")}`;
   }).join("\n");
   data["Location count"] = locs.children.length;
-  data._subject = `Toast website intake: ${data["Group name"]} (${locs.children.length} locations)`;
+  data._subject = `Website intake: ${data["Group name"]} (${locs.children.length} locations)`;
   data._template = "table";
 
   const btn = document.getElementById("go"); btn.disabled = true; btn.textContent = "Sending...";

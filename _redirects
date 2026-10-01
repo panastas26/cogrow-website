@@ -8,6 +8,8 @@
 /contact        /book       301
 /contact.html   /book       301
 
-# Toast rep handoff: old intro-email page folded into the partner page
-/toast-intro       /toast-partners#email  301
-/toast-intro.html  /toast-partners#email  301
+# Renamed partner pages (old slugs kept working)
+/toast-intro       /restaurant-partners#email  301
+/toast-intro.html  /restaurant-partners#email  301
+/toast-partners    /restaurant-partners  301
+/toast-onboarding  /restaurant-intake    301
