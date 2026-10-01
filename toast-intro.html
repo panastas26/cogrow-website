@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toast Intro Email — CoGrow</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .tool{padding:clamp(36px,5vw,64px) 0 clamp(56px,8vw,96px)}
+  .tool h1{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.95;font-size:clamp(36px,5vw,64px);margin:14px 0 14px}
+  .tool .sub{color:var(--dim);max-width:60ch;margin-bottom:32px}
+  .grid{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:clamp(20px,3vw,40px);align-items:start}
+  @media (max-width:860px){.grid{grid-template-columns:1fr}}
+  .f{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+  .f span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+  .f input,.f textarea{width:100%;font:inherit;font-size:16px;color:var(--paper);background:var(--ground-2);border:1px solid var(--line);border-radius:2px;padding:11px 13px}
+  .f textarea{min-height:70px;resize:vertical}
+  .f input:focus,.f textarea:focus{outline:2px solid var(--lime);outline-offset:-1px}
+  .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+  .bar button{border:0;cursor:pointer}
+  .ok{font-family:var(--mono);font-size:12.5px;color:var(--lime);letter-spacing:.06em}
+  .subj{background:#fff;color:#202124;border-radius:4px 4px 0 0;padding:12px 18px;border-bottom:1px solid #e0e0e0;font:14px Arial,Helvetica,sans-serif}
+  .subj b{color:#5f6368;font-weight:400;margin-right:6px}
+  .mail{background:#fff;color:#222;border-radius:0 0 4px 4px;padding:18px;font:small/1.45 Arial,Helvetica,sans-serif;font-size:14px}
+  .mail a{color:#1155cc}
+  .mail ol{margin:0 0 0 0;padding-left:28px}
+  .blank{background:#fff3b0}
+</style>
+</head>
+<body>
+<header class="head"><div class="wrap"><a class="brand" href="index.html"><i><b></b><b></b><b></b></i>CoGrow</a></div></header>
+<main><section class="tool"><div class="wrap">
+  <p class="mono dim">For Toast AEs · Intro email</p>
+  <h1>Toast website intro email</h1>
+  <p class="sub">Fill in the details, click Copy email, and paste into a new Gmail message. Copy the subject separately. Put paul@cogrow.ai on CC.</p>
+
+  <div class="grid">
+    <form id="f" onsubmit="return false">
+      <label class="f"><span>Contact's first name</span><input id="first" placeholder="first name"></label>
+      <label class="f"><span>Restaurant / group name</span><input id="rest" placeholder="restaurant name"></label>
+      <label class="f"><span>Number of locations</span><input id="num" placeholder="#"></label>
+      <label class="f"><span>Locations</span><input id="list" placeholder="Addison, Carrollton, Frisco"></label>
+      <label class="f"><span>One line of context for Paul (optional)</span><textarea id="ctx" placeholder="They want it live before their Frisco opening."></textarea></label>
+      <label class="f"><span>Your name</span><input id="me" placeholder="your name"></label>
+    </form>
+
+    <div>
+      <div class="bar">
+        <button class="btn" id="copyBody" type="button">Copy email</button>
+        <button class="btn ghost" id="copySubj" type="button">Copy subject</button>
+        <span class="ok" id="ok" aria-live="polite"></span>
+      </div>
+      <div class="subj"><b>Subject</b><span id="subjText">Getting your Toast website built: intro to Paul at CoGrow</span></div>
+      <div class="mail" id="mail"></div>
+    </div>
+  </div>
+</div></section></main>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const v = (id, ph, hl) => {
+  const t = $(id).value.trim();
+  return t ? esc(t) : (hl ? `<span class="blank">[${ph}]</span>` : `[${ph}]`);
+};
+const FORM = "https://cogrow.ai/toast-onboarding";
+const CAL = "https://cal.com/cogrowai/toast-website-onboarding";
+
+// Gmail-native markup: one <div> per line, <div><br></div> for blank lines.
+function build(hl){
+  const br = "<div><br></div>";
+  const ctx = $("ctx").value.trim() ? " " + esc($("ctx").value.trim()) : "";
+  const n = $("num").value.trim();
+  const loc = n === "1" ? "location" : "locations";
+  return [
+    `<div>Hi ${v("first","first name",hl)},</div>`, br,
+    `<div>I'd like to introduce you to Paul Anastas at CoGrow (cc'd). Paul's team builds Toast Websites for restaurants, so you get a finished site without having to set it up yourself. It lives in your Toast account, and your menu and prices update automatically from the POS.</div>`, br,
+    `<div>There are two quick steps to get started:</div>`,
+    `<ol><li>Fill out the <a href="${FORM}">intake form</a> (about 5 minutes)</li><li>Book a <a href="${CAL}">30-minute kickoff call</a></li></ol>`, br,
+    `<div>Please have the owner or GM on the call. They'll need to add Paul as a user in Toast Web so his team can build and publish the site. If you have a website address already, have the login for wherever it's registered (GoDaddy, Wix, etc.) handy too.</div>`, br,
+    `<div>Paul, ${v("rest","restaurant name",hl)} has ${v("num","#",hl)} ${loc}: ${v("list","list",hl)}.${ctx}</div>`, br,
+    `<div>I'll let you two take it from here.</div>`, br,
+    `<div>${v("me","your name",hl)}</div>`
+  ].join("");
+}
+function plain(){
+  const d = document.createElement("div"); d.innerHTML = build(false);
+  d.querySelectorAll("li").forEach((li,i)=> li.textContent = `${i+1}. ${li.textContent}`);
+  d.querySelectorAll("a").forEach(a => a.textContent = `${a.textContent} (${a.href})`);
+  return [...d.querySelectorAll("div, li")].map(e => e.textContent).join("\n");
+}
+function render(){ $("mail").innerHTML = build(true); }
+document.querySelectorAll("#f input, #f textarea").forEach(i => i.addEventListener("input", render));
+render();
+
+function flash(msg){ $("ok").textContent = msg; setTimeout(()=> $("ok").textContent = "", 2500); }
+async function copyRich(html, text){
+  try{
+    await navigator.clipboard.write([new ClipboardItem({
+      "text/html": new Blob([html], {type:"text/html"}),
+      "text/plain": new Blob([text], {type:"text/plain"})
+    })]);
+    return true;
+  }catch(_){
+    // Fallback: select the rendered preview and copy it.
+    const r = document.createRange(); r.selectNodeContents($("mail"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    const ok = document.execCommand("copy"); s.removeAllRanges(); return ok;
+  }
+}
+$("copyBody").onclick = async () => {
+  const html = `<div style="font-family:Arial,Helvetica,sans-serif">${build(false)}</div>`;
+  flash(await copyRich(html, plain()) ? "Copied. Paste into Gmail." : "Couldn't copy, select the email and copy it manually.");
+};
+$("copySubj").onclick = async () => {
+  try{ await navigator.clipboard.writeText($("subjText").textContent); flash("Subject copied."); }
+  catch(_){ flash("Couldn't copy the subject."); }
+};
+</script>
+</body>
+</html>
