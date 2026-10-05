@@ -139,7 +139,7 @@
   <div class="wrap">
     <span class="num mono dim">03 · The links</span>
     <h2>Intake form, the call, and access.</h2>
-    <p class="lead dim">The first two are in the intro email. We send the access steps once they've booked, and they're here if a restaurant asks.</p>
+    <p class="lead dim">All three are in the intro email. They're here if a restaurant asks for one again.</p>
     <div class="links">
       <div class="lk">
         <span class="mono">Intake form · 5 minutes</span>
@@ -252,6 +252,7 @@ const v = (id, ph, hl) => {
 };
 const FORM = "https://cogrow.ai/restaurant-intake";
 const CAL = "https://cal.com/cogrowai/website-onboarding";
+const ACCESS = "https://cogrow.ai/restaurant-access";
 
 // Gmail-native markup: one <div> per line, <div><br></div> for blank lines.
 function build(hl){
@@ -261,9 +262,9 @@ function build(hl){
   return [
     `<div>Hi ${v("first","first name",hl)},</div>`, br,
     `<div>I'd like to introduce you to Paul Anastas at CoGrow (cc'd). Paul's team builds restaurant websites that run on your POS, so you get a finished site without having to set it up yourself. It lives in your POS account, and your menu and prices update automatically from the POS.</div>`, br,
-    `<div>There are two quick steps to get started:</div>`,
-    `<ol><li>Fill out the <a href="${FORM}">intake form</a> (about 5 minutes)</li><li>Book a <a href="${CAL}">30-minute kickoff call</a></li></ol>`, br,
-    `<div>Please have the owner or GM on the call. They'll need to add Paul as a user in your POS back office so his team can build the site for your review. If you have a website address already, it helps to have whoever manages it (GoDaddy, Wix, etc.) available too.</div>`, br,
+    `<div>There are three quick steps to get started:</div>`,
+    `<ol><li>Fill out the <a href="${FORM}">intake form</a> (about 5 minutes)</li><li>Book a <a href="${CAL}">30-minute kickoff call</a></li><li>Have your account owner or admin <a href="${ACCESS}">add Paul to your back office</a> (about 5 minutes)</li></ol>`, br,
+    `<div>Please have the owner or GM on the call. Paul's team builds the site as a draft, and you review and publish it. If you have a website address already, it helps to have whoever manages it (GoDaddy, Wix, etc.) available too.</div>`, br,
     `<div>Paul, ${v("rest","restaurant name",hl)} has ${v("num","#",hl)} ${loc}: ${v("list","list",hl)}.${ctx}</div>`, br,
     `<div>I'll let you two take it from here.</div>`, br,
     `<div>${v("me","your name",hl)}</div>`
