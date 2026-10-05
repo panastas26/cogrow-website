@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Give Us Access — CoGrow</title>
+<meta name="description" content="How to give CoGrow access to build your restaurant website.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .phero h1{max-width:15ch}
+  .body{padding:clamp(40px,6vw,72px) 0 clamp(56px,8vw,96px)}
+  .body .wrap > *{max-width:780px}
+  .who{border:1px solid var(--line);background:var(--ground-2);padding:22px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;margin-bottom:40px}
+  .who div{display:flex;flex-direction:column;gap:4px}
+  .who .mono{color:var(--dim);font-size:12px}
+  .who strong{font-size:20px;font-weight:600}
+  .mini{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:var(--lime);color:var(--ground);border:0;padding:9px 13px;cursor:pointer;border-radius:2px;margin-left:auto}
+  .mini:hover{background:var(--paper)}
+  .acc{list-style:none;counter-reset:s;border-top:1px solid var(--line)}
+  .acc li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .acc li::before{content:"0" counter(s);font-family:var(--mono);font-size:13px;color:var(--lime);padding-top:4px}
+  .acc b{display:block;font-family:var(--display);font-size:22px;letter-spacing:-.01em;margin-bottom:6px}
+  .acc p{color:var(--dim)}
+  .acc code{font-family:var(--mono);font-size:14px;color:var(--paper);background:var(--ground-2);border:1px solid var(--line);padding:1px 6px;border-radius:2px}
+  .box{margin-top:36px;padding:22px;border-left:3px solid var(--lime);background:rgba(12,46,34,.6)}
+  .box h2{font-family:var(--display);font-size:22px;margin-bottom:10px}
+  .box p,.box li{color:var(--dim)}
+  .box ul{padding-left:20px;display:grid;gap:6px}
+  .box + .box{border-left-color:var(--dim)}
+  .done{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+</style>
+</head>
+<body>
+<header class="head"><div class="wrap"><a class="brand" href="index.html"><i><b></b><b></b><b></b></i>CoGrow</a></div></header>
+<main>
+
+<section class="phero">
+  <div class="wrap">
+    <p class="mono dim kick">Restaurant websites · Access</p>
+    <h1>Add us to your <span class="lime">back office.</span></h1>
+    <div class="lede">
+      <p>To build your site, we need our own login to your POS back office (the web dashboard, not the register) with permission to edit your website. It takes the account owner or an admin about 5 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="body">
+  <div class="wrap">
+    <div class="who">
+      <div><span class="mono">Invite this person</span><strong>Paul Anastas</strong></div>
+      <div><span class="mono">At this email</span><strong>paul@cogrow.ai</strong></div>
+      <button class="mini" id="cp" type="button">Copy email</button>
+    </div>
+
+    <ol class="acc">
+      <li><div><b>Check the website add-on</b><p>Make sure the website product is active for every location we're building.</p></div></li>
+      <li><div><b>Invite us as a team member</b><p>In your back office, open <code>Team → Employees</code> and invite <code>paul@cogrow.ai</code> to create an account. If there's already a profile for Paul, send the account invitation from that profile.</p></div></li>
+      <li><div><b>Turn on website access</b><p>Give that profile access to the locations we're working on, and turn on <code>6.9 Websites Setup</code> for each one.</p></div></li>
+      <li><div><b>Let us know</b><p>Reply to our email or text Paul once the invitation is sent. We'll accept it and confirm we can open the website editor.</p></div></li>
+    </ol>
+
+    <div class="box">
+      <h2>You stay in control of publishing</h2>
+      <p>You don't need to give us <code>6.4 Publishing</code>. We'll save the site as a draft for your review, and your team approves and publishes it.</p>
+    </div>
+
+    <div class="box">
+      <h2>Please don't send us</h2>
+      <ul>
+        <li>Passwords or verification codes</li>
+        <li>POS or register codes</li>
+        <li>Domain login details. When it's time to connect your domain, we'll walk whoever manages it through the steps on a call.</li>
+      </ul>
+      <p style="margin-top:12px">If you run payroll through your POS, check with your admin or your POS support team on the right way to add a non-employee before you invite us.</p>
+    </div>
+
+    <div class="done">
+      <a class="btn" href="mailto:paul@cogrow.ai?subject=Invitation%20sent">Tell us it's sent →</a>
+      <a class="btn ghost" href="tel:+19785026692">Text or call 978-502-6692</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html" style="font-size:18px"><i><b></b><b></b><b></b></i>CoGrow</a>
+    <span class="mono dim" style="font-size:11.5px">© 2026 CoGrow AI LLC</span>
+  </div>
+</footer>
+<script>
+document.getElementById("cp").onclick = async e => {
+  try{ await navigator.clipboard.writeText("paul@cogrow.ai"); e.target.textContent = "Copied"; setTimeout(()=> e.target.textContent = "Copy email", 1800); }catch(_){}
+};
+</script>
+</body>
+</html>

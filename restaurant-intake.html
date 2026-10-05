@@ -143,7 +143,11 @@
       <p class="mono lime" style="margin-bottom:18px">Got it</p>
       <h2>Thanks. We're on it.</h2>
       <p>We'll start pulling your photos and branding now. If you haven't booked your kickoff call yet, grab a time below. Please plan to have the owner or GM on it, since they'll need to give us access in your POS account.</p>
-      <a class="btn" href="https://cal.com/cogrowai/website-onboarding">Book your kickoff call →</a>
+      <p>One more step before the call: have your account owner or admin <a href="/restaurant-access">add us to your back office</a>. It takes about 5 minutes and you keep control of publishing.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a class="btn" href="https://cal.com/cogrowai/website-onboarding">Book your kickoff call →</a>
+        <a class="btn ghost" href="/restaurant-access">Access steps →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -227,10 +231,10 @@ form.addEventListener("submit", async e=>{
   try{
     const r = await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)});
     const j = await r.json().catch(()=>({}));
-    if(!r.ok || String(j.success)==="false") throw new Error(j.message||"send failed");
+    if(!r.ok || String(j.success)==="false") throw new Error(`${r.status} ${j.message||"send failed"}`);
     showDone();
-  }catch(_){
-    err.innerHTML = 'That didn\'t go through. Try again, or email <a href="mailto:paul@cogrow.ai">paul@cogrow.ai</a>.';
+  }catch(x){
+    err.innerHTML = 'That didn\'t go through. Try again, or email <a href="mailto:paul@cogrow.ai">paul@cogrow.ai</a>.<br><small style="opacity:.7">' + String(x.message||x).replace(/</g,"&lt;") + '</small>';
     btn.disabled = false; btn.textContent = "Send it over →";
   }
 });

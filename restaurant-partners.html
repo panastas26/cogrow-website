@@ -31,8 +31,8 @@
   .check li{display:flex;gap:14px;align-items:flex-start;font-size:17px}
   .check li::before{content:"";flex:0 0 18px;height:18px;border:1.5px solid var(--lime);border-radius:2px;margin-top:4px}
   .note{color:var(--dim);font-size:15.5px;margin-top:20px;max-width:60ch}
-  .links{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media (max-width:760px){.links{grid-template-columns:1fr}}
+  .links{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media (max-width:980px){.links{grid-template-columns:1fr}}
   .lk{border:1px solid var(--line);padding:22px;background:var(--ground-2);display:flex;flex-direction:column;gap:10px}
   .lk .mono{color:var(--lime)}
   .lk a.url{font-size:18px;word-break:break-all}
@@ -100,7 +100,7 @@
   <div class="wrap">
     <span class="num mono dim">00 · What we do</span>
     <h2>A finished website, without the restaurant doing the setup.</h2>
-    <p class="lead">We pull their photos, branding and copy from their current site and socials, set up the pages, connect their domain and publish. The menu and prices already sync from the POS, so nobody re-enters them. The restaurant owns the site and can edit it any time.</p>
+    <p class="lead">We pull their photos, branding and copy from their current site and socials, set up the pages and save the site as a draft. The restaurant reviews it and publishes, and we walk them through connecting their domain. The menu and prices already sync from the POS, so nobody re-enters them. The restaurant owns the site and can edit it any time.</p>
     <div class="price">
       <div><strong>$279</strong><span>per location, one time</span></div>
       <div><strong>Optional</strong><span>monthly plan for ongoing updates</span></div>
@@ -137,9 +137,9 @@
 
 <section class="sec" id="links">
   <div class="wrap">
-    <span class="num mono dim">03 · The two links</span>
-    <h2>Intake form first, then the call.</h2>
-    <p class="lead dim">Both are already in the intro email. They're here if a restaurant asks for them again.</p>
+    <span class="num mono dim">03 · The links</span>
+    <h2>Intake form, the call, and access.</h2>
+    <p class="lead dim">The first two are in the intro email. We send the access steps once they've booked, and they're here if a restaurant asks.</p>
     <div class="links">
       <div class="lk">
         <span class="mono">Intake form · 5 minutes</span>
@@ -150,8 +150,14 @@
       <div class="lk">
         <span class="mono">Kickoff call · 30 minutes</span>
         <a class="url" href="https://cal.com/cogrowai/website-onboarding" target="_blank">cal.com/cogrowai/website-onboarding</a>
-        <p>A video call with a member of our team. The owner or GM adds us in the back office and we start the domain connection.</p>
+        <p>A video call with a member of our team. We confirm the details, make sure we have back-office access, and walk them through connecting their domain.</p>
         <div class="row2"><button class="mini" data-copy="https://cal.com/cogrowai/website-onboarding">Copy link</button></div>
+      </div>
+      <div class="lk">
+        <span class="mono">Back-office access · 5 minutes</span>
+        <a class="url" href="https://cogrow.ai/restaurant-access" target="_blank">cogrow.ai/restaurant-access</a>
+        <p>Step-by-step for the owner or admin to invite us with website setup permission. They keep publishing rights.</p>
+        <div class="row2"><button class="mini" data-copy="https://cogrow.ai/restaurant-access">Copy link</button></div>
       </div>
     </div>
   </div>
@@ -192,10 +198,10 @@
     <p class="lead dim">That's our target from the kickoff call. The usual hold-up is getting into the restaurant's domain account. We'll copy you on the go-live email.</p>
     <ol class="flow">
       <li><span class="when">Intake</span><div><b>They fill out the form</b><p>We pull their menu view, photos, logo, reviews and any existing copy.</p></div></li>
-      <li><span class="when">Kickoff</span><div><b>30-minute call</b><p>We confirm locations and branding. The owner adds us in the back office with website setup and publishing permissions, and we start the domain connection.</p></div></li>
+      <li><span class="when">Kickoff</span><div><b>30-minute call</b><p>We confirm locations and branding. We confirm locations and branding, and make sure the owner has added us in the back office with website setup permission (6.9). The steps are on our <a href="/restaurant-access">access page</a>.</p></div></li>
       <li><span class="when">Build</span><div><b>We set up the site</b><p>Layout, branding, pages, photos and online ordering, all inside their POS account.</p></div></li>
-      <li><span class="when">Review</span><div><b>Short screen-share</b><p>They see the site and get one round of edits.</p></div></li>
-      <li><span class="when">Publish</span><div><b>We go live</b><p>The domain gets connected. DNS can take up to 48 hours to settle.</p></div></li>
+      <li><span class="when">Review</span><div><b>Short screen-share</b><p>They see the draft and get one round of edits.</p></div></li>
+      <li><span class="when">Publish</span><div><b>They publish</b><p>The owner approves and publishes the site, and we walk whoever manages the domain through connecting it. DNS can take up to 48 hours to settle.</p></div></li>
       <li><span class="when">Handoff</span><div><b>They take the keys</b><p>A one-page guide to editing hours and photos. We remove our access, or keep it if they sign up for monthly updates.</p></div></li>
     </ol>
   </div>
@@ -210,7 +216,7 @@
       <details><summary>Who owns the website?</summary><p>The restaurant. It's in their POS account and they can edit it any time.</p></details>
       <details><summary>We have several restaurants. One site or several?</summary><p>Each concept gets its own site. Locations of the same concept share one site with a location picker. Pricing is per location.</p></details>
       <details><summary>We already pay for a website (SpotHopper, BentoBox, Wix).</summary><p>We rebuild it on their POS's website builder, and they can cancel the old service once the new site is live.</p></details>
-      <details><summary>Do we lose our web address?</summary><p>No. We connect their existing domain. Old pages can be forwarded so Google links still work.</p></details>
+      <details><summary>Do we lose our web address?</summary><p>No. We walk them through connecting their existing domain. Old pages can be forwarded so Google links still work.</p></details>
       <details><summary>What do we need to send?</summary><p>Just the intake form. A logo file and a few good photos help, but we pull what we can from their current site and socials.</p></details>
       <details><summary>How do we pay?</summary><p>CoGrow invoices the restaurant directly. Nothing goes through their POS bill.</p></details>
     </div>
@@ -257,7 +263,7 @@ function build(hl){
     `<div>I'd like to introduce you to Paul Anastas at CoGrow (cc'd). Paul's team builds restaurant websites that run on your POS, so you get a finished site without having to set it up yourself. It lives in your POS account, and your menu and prices update automatically from the POS.</div>`, br,
     `<div>There are two quick steps to get started:</div>`,
     `<ol><li>Fill out the <a href="${FORM}">intake form</a> (about 5 minutes)</li><li>Book a <a href="${CAL}">30-minute kickoff call</a></li></ol>`, br,
-    `<div>Please have the owner or GM on the call. They'll need to add Paul as a user in your POS back office so his team can build and publish the site. If you have a website address already, have the login for wherever it's registered (GoDaddy, Wix, etc.) handy too.</div>`, br,
+    `<div>Please have the owner or GM on the call. They'll need to add Paul as a user in your POS back office so his team can build the site for your review. If you have a website address already, it helps to have whoever manages it (GoDaddy, Wix, etc.) available too.</div>`, br,
     `<div>Paul, ${v("rest","restaurant name",hl)} has ${v("num","#",hl)} ${loc}: ${v("list","list",hl)}.${ctx}</div>`, br,
     `<div>I'll let you two take it from here.</div>`, br,
     `<div>${v("me","your name",hl)}</div>`
