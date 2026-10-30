@@ -1,0 +1,15 @@
+# CoGrow
+
+> CoGrow is a three-person firm (Boston, Chicago, New York) that builds websites, builds AI workflows, and trains small-business teams to use ChatGPT and Claude on real work. We don't sell software; clients own every account we set up.
+
+## Services
+- [Websites](https://cogrow.ai/websites): Custom sites built from a business's real photos, reviews and brand, plus Google Business Profile setup and instant lead alerts. $500 to build, $150/month for hosting, Google listing upkeep and edits. Live in about two weeks.
+- [Workflows](https://cogrow.ai/workflows): AI on the jobs that repeat every week (estimates and quotes, job notes into invoices and work orders, new-lead follow-up, weekly reports, invoice reminders, capturing senior staff know-how), connected to tools the business already uses. A person approves every output. Priced per job after a free call.
+- [AI training](https://cogrow.ai/ai-training): ChatGPT or Claude set up around the team's own documents, a hands-on session on real work, a playbook per role, and a follow-up check-in.
+
+## Who it's for
+Owner-operated and small-to-midsize businesses without an in-house tech team, including contractors and trades, property management and real estate, accounting, law and insurance firms, and local service businesses.
+
+## Get started
+- [Book a free 30-minute call](https://cogrow.ai/book)
+- Email: paul@cogrow.ai
